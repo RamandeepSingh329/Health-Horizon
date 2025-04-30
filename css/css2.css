@@ -94,13 +94,11 @@ header {
 
 .header-title {
     transition: transform 0.3s ease, color 0.3s ease;
-    /* Transition for transform and color */
-    color: #333;
-    /* Default text color */
-    background: linear-gradient(to right, #4caf50, #8bc34a);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: text-move 3s ease infinite;
+    color: black; /* Changed from gradient to solid black */
+    background: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: unset;
+    animation: none;
 }
 
 @keyframes text-move {

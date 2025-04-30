@@ -88,11 +88,11 @@ header {
 .logo h1 {
     font-size: 24px;
     margin: 0;
-    color: #333; /* Base text color */
+    color: #333;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-    animation: expandBlurRotate 5s ease-in-out infinite; /* Apply the combined animation */
-    transform-origin: center center; /* Ensure rotation is around the center */
+    transform-origin: center center;
 }
+
 
 @keyframes expandBlurRotate {
     0% {
