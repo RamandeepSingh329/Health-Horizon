@@ -93,16 +93,28 @@ header {
     transform-origin: center center;
 }
 
-
+@keyframes expandBlurRotate {
+    0% {
+        transform: scale(1); /* Removed rotate(0deg) */
+        filter: blur(0px);
+    }
+    50% {
+        transform: scale(1.5); /* Removed rotate(0deg) */
+        filter: blur(5px);
+    }
+    100% {
+        transform: scale(1); /* Removed rotate(360deg) */
+        filter: blur(0px);
+    }
+}
 
 /* Keep the hover effect if you still want it */
 .logo h1:hover {
-    transform: scale(1.1) rotate(0deg); /* Slightly scale up on hover, stop rotation */
-    filter: blur(0); /* Remove blur on hover */
+    transform: scale(1.1) rotate(0deg); /* Still scaling on hover, rotation is already removed from the animation */
+    filter: blur(0);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     color: #007bff;
 }
-
 /* Keep the base styles for the other headings */
 .tracker-title, .diet-tips-heading {
     font-size: 24px;
