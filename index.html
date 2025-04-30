@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="assets/logo.jpg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calorie Counter & Diet Instructor</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+    <div id="loading-bar"></div>
+
+    <header>
+        <header>
+            <div class="logo">
+                <img src="assets/logo.jpg" height="100px" width="150px">
+                <h1 class="tracker-title"> HealthHorizon – Expanding the limits of well-being.
+                </h1>            </div>
+            <nav>
+                <div class="button-container">
+                    <div>
+                        <a href="index.html" class="menu-button"><i class="fas fa-home"></i> Home</a>
+                        <a href="calorie tracker.html" class="menu-button"><i class="fas fa-chart-line"></i> Calorie Tracker</a>
+                        <a href="meal planner.html" class="menu-button"><i class="fas fa-utensils"></i> Get Meal Suggestions</a>
+                        <a href="food calorie checker.html" class="menu-button"><i class="fas fa-search"></i> Calorie Checker</a>
+                        <a href="calorie intake suggester.html" class="menu-button"><i class="fas fa-calculator"></i> Calorie Intake Suggester</a>
+                        <a href="Foody Quiz.html" class="menu-button"><i class="fas fa-question-circle"></i> Test Your Knowledge</a>
+                      </div>
+                    </nav>
+        </header>
+        </header>
+
+    <main>
+        <!-- User Profile Section -->
+        <section id="profile">
+            <h2><i class="fas fa-user-circle"></i> Your Profile</h2>
+            <form id="profile-form">
+                <label for="age">Age:</label><input type="number" id="age" required><br>
+                <label for="weight">Weight (kg):</label><input type="number" id="weight" required><br>
+                <label for="height">Height (cm):</label><input type="number" id="height" required><br>
+                <label for="activity">Activity Level:</label>
+                <select id="activity">
+                    <option value="1.2">Sedentary</option>
+                    <option value="1.375">Lightly Active</option>
+                    <option value="1.55">Moderately Active</option>
+                    <option value="1.725">Very Active</option>
+                </select><br>
+                <button type="button" onclick="calculateTDEE()">Calculate TDEE - <marquee>Total Daily Energy Expenditure</marquee></button>
+            </form>
+            <div id="tdee-output"></div>
+        </section>
+
+        <!-- Calorie Tracker Section -->
+        <section id="calorie-tracker">
+            <h2><i class="fas fa-utensils"></i> Food Log</h2>
+            <form id="food-log-form">
+                <label for="food-name">Food:</label><input type="text" id="food-name" required><br>
+                <label for="calories">Calories:</label><input type="number" id="calories" required><br>
+                <button id="log-food-btn" onclick="logFood()">Log Food</button>
+            </form>
+
+            <h3>Logged Foods:</h3>
+            <ul id="food-list">
+                <!-- Dynamically populated food log -->
+            </ul>
+
+            <div>
+                <h3>Total Calories: <span id="total-calories">0</span></h3>
+                <progress id="calorie-progress" value="0" max="2000"></progress>
+            </div>
+        </section>
+
+        <!-- Diet Suggestions Section -->
+        <a href="meal planner.html">
+
+            <section id="diet-suggestions">
+                <h2 class="diet-tips-heading">Get Diet Tips</h2>
+                <div id="suggestions">
+                    <!-- Suggestions will appear here -->
+                </div>
+            </section>
+                </main>
+
+    <footer>
+        <a href=" https://ramandeepsingh329.github.io/MyPortfolio/">
+        <p>Created by Ramandeep Singh</p></a>
+    </footer>
+
+    <script src="./js/app.js"></script>
+</body>
+</html>

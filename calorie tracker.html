@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="assets/logo.jpg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthHorizon – Expanding the limits of well-being.</title>
+    <link rel="stylesheet" href="./css/css2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="assets/logo.jpg" height="100px" width="150px">
+            <h1 class="header-title">Fitness Progress Tracker</h1>
+        </div>
+        <nav>
+            <ul>
+                <a href="index.html" class="menu-button"><i class="fas fa-home"></i> Home</a>
+                <a href="meal planner.html" class="menu-button"><i class="fas fa-utensils"></i> Get Meal Suggestions</a>
+                <a href="food calorie checker.html" class="menu-button"><i class="fas fa-search"></i> Calorie Checker</a>
+                <a href="calorie intake suggester.html" class="menu-button"><i class="fas fa-calculator"></i> Calorie Intake Suggester</a>
+                <a href="Foody Quiz.html" class="menu-button"><i class="fas fa-question-circle"></i> Test Your Knowledge</a>
+    </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section id="progress-input">
+            <h2>Log Your Progress</h2>
+            <form id="progress-form">
+                <label for="date">Date:</label>
+                <input type="date" id="date" required><br>
+
+                <label for="weight">Weight (kg):</label>
+                <input type="number" id="weight" required><br>
+
+                <label for="calories-burned">Calories Burned:</label>
+                <input type="number" id="calories-burned" required><br>
+
+                <label for="workout-type">Workout Type:</label>
+                <select id="workout-type" required>
+                    <option value="Cardio">Cardio</option>
+                    <option value="Strength Training">Strength Training</option>
+                    <option value="Yoga">Yoga</option>
+                    <option value="HIIT">HIIT</option>
+                </select><br>
+
+                <button type="button" onclick="logProgress()">Log Progress</button>
+            </form>
+        </section>
+
+        <section id="progress-log">
+            <h2>Your Progress Log</h2>
+            <ul id="progress-list">
+                <!-- Dynamically populated progress log -->
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p class="footer-text">Created by Ramandeep Singh</p>
+    </footer>
+
+    <script src="./js/app2.js"></script>
+</body>
+</html>

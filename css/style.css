@@ -1,0 +1,828 @@
+body {
+    background-image: url('../assets/calorie.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    line-height: 1.6;
+    background-image: linear-gradient(to right, #f4f4f4, #e8e8e8, #f4f4f4); /* Gradient background */
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientBackground 15s ease infinite;
+  }
+  @keyframes gradientBackground {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  #loading-bar {
+    position: fixed; /* Stay at the top */
+    top: 0;
+    left: 0;
+    width: 0%; /* Start with 0 width */
+    height: 3px; /* Adjust thickness as needed */
+    background-color: #ff0000; /* YouTube red */
+    z-index: 1000; /* Ensure it's on top of other elements */
+    transition: width 0.2s ease-in-out; /* Smooth transition for initial loading */
+}
+
+#loading-bar.loading {
+    width: 90%; /* Animate to this width during loading */
+    transition: width 0.8s linear; /* Slower, linear animation for the loading phase */
+}
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    backdrop-filter: blur(10px);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.75)); /* Gradient inside container */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+}
+
+header {
+    display: flex;
+    align-items: center;
+    background-color: rgba(76, 175, 80, 0.8);
+    color: white;
+    padding: 10px 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    margin-right: 10px;
+    transition: transform 0.3s ease-in-out;
+    animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.logo img:hover {
+    transform: scale(1.05);
+}
+
+.logo h1 {
+    font-size: 24px;
+    margin: 0;
+    color: #333; /* Base text color */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    animation: expandBlurRotate 5s ease-in-out infinite; /* Apply the combined animation */
+    transform-origin: center center; /* Ensure rotation is around the center */
+}
+
+@keyframes expandBlurRotate {
+    0% {
+        transform: scale(1) rotate(0deg);
+        filter: blur(0px);
+    }
+    50% {
+        transform: scale(1.5) rotate(0deg);
+        filter: blur(5px);
+    }
+    100% {
+        transform: scale(1) rotate(360deg);
+        filter: blur(0px);
+    }
+}
+
+/* Keep the hover effect if you still want it */
+.logo h1:hover {
+    transform: scale(1.1) rotate(0deg); /* Slightly scale up on hover, stop rotation */
+    filter: blur(0); /* Remove blur on hover */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    color: #007bff;
+}
+
+/* Keep the base styles for the other headings */
+.tracker-title, .diet-tips-heading {
+    font-size: 24px;
+    margin: 0;
+    color: #333;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    transition: text-shadow 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.tracker-title:hover, .diet-tips-heading:hover {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    color: #007bff;
+}
+  
+.tracker-title {
+    color: whitesmoke;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.tracker-title:hover {
+    color: #007BFF;
+    transform: scale(1.1);
+}
+
+nav {
+    flex-grow: 1;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 15px;
+    position: relative;
+    transition: color 0.3s ease;
+    transition: color 0.3s ease, transform 0.2s ease;
+    position: relative;
+    overflow: hidden; /* Needed for the overlay effect */
+  
+}
+nav ul li a:hover {
+    color: #d1e7dd;
+    transform: translateY(-2px); /* Slight vertical lift on hover */
+}
+
+nav ul li a:active {
+    color: #d1e7dd;
+    transform: scale(1.1);
+    transition: transform 0.1s ease;
+}
+nav ul li a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+  nav ul li a:hover::before {
+    opacity: 1;
+  }
+    
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: #d1e7dd;
+    transform: translateX(-50%) scaleX(0);
+    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    background-color: rgba(209, 231, 221, 0.7); /* translucent color for underline */
+
+}
+
+nav ul li a:active::after {
+    transform: translateX(-50%) scaleX(1);
+}
+
+nav ul li a:hover {
+    color: #d1e7dd;
+}
+nav ul li a:hover::after {
+    transform: translateX(-50%) scaleX(1);
+    background-color: rgba(209, 231, 221, 1);
+}
+h2 {
+    font-size: 2em;
+    color: #555;
+    font-weight: 400; /* Regular weight for elegance */
+    margin-bottom: 20px;
+    text-align: center; /* Center the heading */
+    position: relative; /* For positioning pseudo-elements */
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, color 0.2s ease-in-out; /* Added color transition */
+    transform-origin: center;
+    outline: none; /* Remove default focus outline */
+    padding-bottom: 8px; /* Add padding for visual space */
+    cursor: pointer; /* Indicate interactivity on hover */
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 2px;
+    background-color: #ccc;
+    margin: 10px auto 0; /* Center the separator */
+    transition: transform 0.2s ease-out, background-color 0.2s ease-in-out; /* Transition for separator color */
+}
+
+h2:hover {
+    color: #007bff; /* Change color on hover */
+    transform: translateY(-2px); /* Subtle lift on hover */
+    box-shadow: 2px 5px 8px rgba(0, 0, 0, 0.1); /* Slightly more pronounced shadow on hover */
+}
+
+h2:hover::after {
+    background-color: #007bff; /* Change separator color on hover */
+    transform: scaleX(1.1); /* Slightly widen separator on hover */
+}
+
+h2:focus {
+    transform: scale(1.05) translateY(-1px); /* Slight scale and lift on focus */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.15); /* Subtle shadow for depth on focus */
+}
+
+h2:focus::after {
+    transform: scaleX(1.2); /* Slightly widen the separator on focus */
+    background-color: #007bff; /* Ensure separator color is consistent with hover */
+}
+main {
+    padding: 20px;
+}
+
+section {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Deeper shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), inset 0 2px 5px rgba(0, 0, 0, 0.05); /* Added inner shadow */
+    transform: perspective(800px) rotateX(0.5deg); /* Subtle perspective */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+}
+section:hover {
+    transform: translateY(-5px); /* Lift section on hover */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+    transform: perspective(800px) rotateX(0deg) translateY(-5px); /* Adjusted hover transform */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2), inset 0 3px 7px rgba(0, 0, 0, 0.08); /* Increased hover shadow */
+  
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+input[type="number"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for focus */
+}
+
+input[type="number"]:focus,
+select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 7px rgba(0, 123, 255, 0.6);
+    outline: none;
+}
+
+select option {
+    padding: 8px;
+    font-size: 1em;
+    background-color: #f9f9f9; /* Slightly different background for options */
+    transition: background-color 0.2s ease;
+}
+
+select option:hover {
+    background-color: #e9ecef; /* Lighter background on option hover */
+}
+
+/* Animations */
+input[type="number"] {
+    animation: slideIn 0.5s ease-out;
+}
+
+select {
+    animation: fadeIn 0.5s ease-out;
+}
+
+label {
+    animation: fadeIn 0.5s ease-out backwards 0.1s; /* Slight delay */
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Enhanced Activity Level Selection */
+.activity-wrapper {
+    position: relative; /* For custom arrow positioning */
+}
+
+select#activity {
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: #fff; /* Solid background */
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px top 50%;
+    background-size: 15px;
+    padding-right: 30px;
+    cursor: pointer;
+    z-index: 1; /* Ensure arrow is above potential effects */
+}
+
+select#activity::-ms-expand {
+    display: none;
+}
+
+/* Custom dropdown appearance on focus */
+select#activity:focus {
+    border-color: #28a745; /* Green focus color for activity */
+    box-shadow: 0 0 7px rgba(40, 167, 69, 0.6);
+    /* Add a subtle animation to the dropdown appearance */
+    animation: pulseShadow 0.3s ease-in-out;
+}
+
+@keyframes pulseShadow {
+    0% {
+        box-shadow: 0 0 7px rgba(40, 167, 69, 0.3);
+    }
+    100% {
+        box-shadow: 0 0 7px rgba(40, 167, 69, 0.6);
+    }
+}
+
+/* Style the options more clearly */
+select#activity option {
+    background-color: #f8f9fa;
+    color: #495057;
+    border-bottom: 1px solid #eee;
+}
+
+select#activity option:last-child {
+    border-bottom: none;
+}
+
+select#activity option:checked,
+select#activity option:hover {
+    background-color: #28a745;
+    color: white;
+}
+input:focus, select:focus, button:focus {
+    outline: 2px solid #4CAF50; /* Distinct focus outline */
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); /* Add a subtle glow */
+}
+
+input[type="date"],
+input[type="number"],
+select {
+    width: calc(100% - 22px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    overflow: hidden; /* Needed for the ripple effect */
+}
+    button::after {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        opacity: 0;
+        background-image: radial-gradient(circle, rgba(255, 255, 255, 0.4) 10%, transparent 10.01%);
+        background-repeat: no-repeat;
+        background-position: 50%;
+        transform: scale(10, 10);
+        transition: transform 0.5s, opacity 1s;
+      }
+      
+      button:active::after {
+        transform: scale(0, 0);
+        opacity: 1;
+        transition: 0s;
+      }
+      
+button:hover {
+    background-color: #45a049;
+    transform: scale(1.05); /* Slight scale on hover */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Add shadow on hover */
+}
+button:hover {
+    background-color: #45a049;
+    animation: burst 0.5s ease;
+}
+
+button:active {
+    animation: burst 0.3s ease;
+}
+
+@keyframes burst {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+.diet-tips-heading {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.diet-tips-heading{
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+.diet-tips-heading:hover {
+    transform: scale(1.1);
+    color: #4CAF50;
+    text-shadow: 0 0 15px rgba(76, 175, 80, 0.5);
+}
+
+.diet-tips-heading:active {
+    transform: scale(0.95);
+}
+
+.diet-tips-heading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(76, 175, 80, 0.3) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.diet-tips-heading:hover::after {
+    opacity: 1;
+    width: 150%;
+    height: 150%;
+}
+
+.diet-tips-heading::before {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #4CAF50;
+    transition: width 0.3s ease;
+}
+
+.diet-tips-heading:hover::before {
+    width: 100%;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #f4f4f4;
+}
+
+footer p {
+    margin: 0;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+footer p:hover {
+    color: #4CAF50;
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) { /* Tablet and smaller screens */
+    .container {
+        margin: 20px auto;
+        padding: 15px;
+        max-width: 90%; /* Adjust container width */
+    }
+
+    nav ul {
+        flex-direction: column; /* Stack navigation on small screens */
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    nav ul li a {
+        padding: 8px 12px;
+    }
+
+    main {
+        padding: 10px;
+    }
+
+    input[type="date"],
+    input[type="number"],
+    select,
+    button {
+        width: 100%; /* Full width on small screens */
+        margin-bottom: 10px;
+        padding: 8px;
+    }
+
+    .logo h1 {
+        font-size: 20px; /* Smaller logo title */
+    }
+
+    header {
+        flex-direction: column; /* Stack header elements */
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) { /* Mobile screens */
+    .container {
+        padding: 10px;
+    }
+
+    section {
+        padding: 15px;
+    }
+
+    .logo img {
+        max-width: 50px;
+    }
+}
+/* Base Styles */
+body {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientBackground 15s ease infinite;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    line-height: 1.6;
+}
+
+@keyframes gradientBackground {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
+header {
+    display: flex;
+    align-items: center;
+    background-color: rgba(76, 175, 80, 0.8);
+    color: white;
+    padding: 10px 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    margin-right: 10px;
+    transition: transform 0.3s ease-in-out;
+    max-width: 60px; /* Ensure logo is not too large */
+}
+
+.logo h1 {
+    font-size: 24px;
+    margin: 0;
+    color: #333;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation Styles */
+nav {
+    flex-grow: 1;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 15px;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #d1e7dd;
+}
+
+/* Headings */
+h2 {
+    font-size: 2em;
+    color: #555;
+    font-weight: 400;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Button Styles */
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) { /* Tablet and smaller screens */
+    .container {
+        margin: 20px auto;
+        padding: 15px;
+        max-width: 90%; /* Adjust container width */
+    }
+
+    header {
+        flex-direction: column; /* Stack header elements */
+        align-items: center;
+    }
+
+    .logo h1 {
+        font-size: 20px; /* Smaller logo title */
+    }
+
+    nav ul {
+        flex-direction: column; /* Stack navigation on small screens */
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    nav ul li a {
+        padding: 8px 12px;
+    }
+
+    h2 {
+        font-size: 1.5em; /* Smaller heading on mobile */
+    }
+
+    button {
+        width: 100%; /* Full width buttons on mobile */
+        padding: 12px; /* Increased padding for touch targets */
+    }
+}
+
+@media (max-width: 480px) { /* Mobile screens */
+    .container {
+        padding: 10px;
+    }
+
+    header {
+        padding: 10px; /* Adjust header padding */
+    }
+
+    .logo img {
+        max-width: 50px; /* Smaller logo on mobile */
+    }
+
+    h2 {
+        font-size: 1.2em; /* Further reduce heading size */
+    }
+
+    button {
+        padding: 10px; /* Adjust button padding */
+    }
+}
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0; /* Add some top and bottom margin to separate from text */
+  }
+  
+  .menu-button {
+    display: inline-flex; /* Use inline-flex for icon alignment */
+    align-items: center; /* Vertically center the icon and text */
+    padding: 12px 20px;
+    margin-right: 15px;
+    text-decoration: none;
+    color: #fff; /* Adjust text color if needed for your navbar color */
+    background: /* YOUR_NAVBAR_COLOR */; /* Replace blue with your navbar color */
+    border: none;
+    border-radius: 25px; /* Pill-shaped buttons */
+    font-size: 18px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Stronger shadow */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smooth transitions */
+  }
+  
+  .menu-button i {
+    margin-right: 10px; /* Space between icon and text */
+    font-size: 20px; /* Larger icons */
+  }
+  
+  .menu-button:hover {
+    transform: translateY(-2px); /* Slight lift on hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
+    background: /* A slightly darker shade of YOUR_NAVBAR_COLOR */; /* Consider a darker hover effect */
+  }

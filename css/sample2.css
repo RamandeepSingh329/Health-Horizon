@@ -1,0 +1,186 @@
+@keyframes backgroundAnimation {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+  }
+  
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: url('../assets/calorie.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    animation: backgroundAnimation 30s linear infinite;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+  }
+  
+  /* === CONTAINER === */
+  .container {
+    max-width: 600px;
+    width: 90%;
+    margin: 60px auto;
+    padding: 30px 20px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    box-sizing: border-box;
+  }
+  
+  .container:hover {
+    transform: scale(1.02);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* === HEADINGS === */
+  h1 {
+    font-size: 2em;
+    color: #fff;
+    margin-bottom: 20px;
+    position: relative;
+    transition: color 0.4s ease;
+  }
+  
+  h1:hover {
+    color: #00e676;
+  }
+  
+  h1::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #00e676;
+    margin: 10px auto 0;
+    border-radius: 2px;
+    transition: width 0.4s ease;
+  }
+  
+  h1:hover::after {
+    width: 100px;
+  }
+  
+  /* === INPUT FIELD === */
+  input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    margin: 15px 0;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.25);
+    color: #fff;
+    font-size: 1em;
+    outline: none;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    box-sizing: border-box;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  input[type="text"]::placeholder {
+    color: #ddd;
+  }
+  
+  input[type="text"]:hover,
+  input[type="text"]:focus {
+    border-color: #00e676;
+    box-shadow: 0 0 12px rgba(0, 230, 118, 0.6);
+    transform: scale(1.02);
+  }
+  
+  /* === BUTTON === */
+  button {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #43e97b, #38f9d7);
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.4s ease, transform 0.3s ease;
+  }
+  
+  button:hover {
+    background: linear-gradient(135deg, #00e676, #00bfa5);
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 230, 118, 0.4);
+  }
+  
+  button::after {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: 50%;
+    left: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 50%;
+    transition: transform 0.6s ease;
+  }
+  
+  button:active::after {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  
+  /* === RESULT AREA === */
+  #result {
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #fff;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  #result.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  #result.hide {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  
+  /* === BURST ANIMATION === */
+  @keyframes burst {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+  }
+  
+  /* === RESPONSIVE DESIGN === */
+  @media (max-width: 768px) {
+    .container {
+      width: 95%;
+      margin: 30px 10px;
+      padding: 20px;
+    }
+  
+    h1 {
+      font-size: 1.6em;
+    }
+  
+    input[type="text"],
+    button {
+      font-size: 1em;
+      padding: 10px;
+    }
+  
+    #result {
+      font-size: 1em;
+    }
+  }
+  
