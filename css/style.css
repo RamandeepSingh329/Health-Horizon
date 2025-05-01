@@ -793,34 +793,107 @@ button:hover {
         padding: 10px; /* Adjust button padding */
     }
 }
-.button-container {
+:root {
+    --navbar-color: #4CAF50;
+    --navbar-color-hover: #45a049;
+    --navbar-focus-glow: rgba(76, 175, 80, 0.6);
+  }
+  
+  @keyframes breathe {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+  }
+  
+  .button-container {
     display: flex;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
     justify-content: center;
-    margin: 20px 0; /* Add some top and bottom margin to separate from text */
+    gap: 10px; /* Better spacing between buttons */
+    margin: 20px 0;
   }
   
   .menu-button {
-    display: inline-flex; /* Use inline-flex for icon alignment */
-    align-items: center; /* Vertically center the icon and text */
-    padding: 12px 20px;
-    margin-right: 15px;
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 16px;
     text-decoration: none;
-    color: #fff; /* Adjust text color if needed for your navbar color */
-    background: /* YOUR_NAVBAR_COLOR */; /* Replace blue with your navbar color */
+    color: #fff;
+    background: var(--navbar-color);
     border: none;
-    border-radius: 25px; /* Pill-shaped buttons */
-    font-size: 18px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Stronger shadow */
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smooth transitions */
-  }
-  
-  .menu-button i {
-    margin-right: 10px; /* Space between icon and text */
-    font-size: 20px; /* Larger icons */
+    border-radius: 25px;
+    font-size: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease,
+      background-color 0.3s ease;
+    animation: breathe 3s ease-in-out infinite;
+    transform-style: preserve-3d;
+    perspective: 800px;
   }
   
   .menu-button:hover {
-    transform: translateY(-2px); /* Slight lift on hover */
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
-    background: /* A slightly darker shade of YOUR_NAVBAR_COLOR */; /* Consider a darker hover effect */
+    transform: rotateX(8deg) rotateY(4deg) scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    background: var(--navbar-color-hover);
   }
+  
+  .menu-button:focus {
+    outline: none;
+    transform: rotateX(5deg) rotateY(3deg) scale(1.07);
+    box-shadow: 0 0 0 4px var(--navbar-focus-glow), 0 6px 12px rgba(0, 0, 0, 0.25);
+  }
+  
+  /* 🔽 Responsive Adjustment for Small Screens */
+  @media (max-width: 480px) {
+    .menu-button {
+      padding: 8px 14px;
+      font-size: 14px;
+      border-radius: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+      animation: breathe 4s ease-in-out infinite; /* Slower breathing on mobile */
+    }
+  }
+  /* Style for circular-edged buttons */
+button, input[type="submit"] {
+    border-radius: 50px; /* Circular edges */
+    padding: 12px 25px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover effect for buttons */
+button:hover, input[type="submit"]:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+/* Active effect for buttons */
+button:active, input[type="submit"]:active {
+    transform: scale(0.98);
+}
+
+/* Style for circular-edged input boxes */
+input[type="text"], input[type="number"], select {
+    border-radius: 50px; /* Circular edges */
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Focus effect for input boxes */
+input[type="text"]:focus, input[type="number"]:focus, select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}

@@ -764,3 +764,20 @@ input[type="number"]:focus {
     outline: none;
     box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); /* Add a subtle focus shadow */
 }
+/* Apply circular edges to the container */
+.container {
+    border-radius: 20px;  /* Circular edges for the container */
+    padding: 20px;  /* Optional, just to provide space inside the container */
+    background-color: #f4f4f4;  /* Optional, just to make the container visible */
+    border: 1px solid #ddd;  /* Optional, just to outline the container */
+}
+
+/* Apply circular edges to the input fields inside the container */
+.container input[type="date"],
+.container input[type="number"],
+.container select {
+    border-radius: 20px;  /* Circular edges for input fields */
+    padding: 10px;  /* Optional, adjust input padding as needed */
+    border: 1px solid #ccc;  /* Optional, adjust border style */
+    width: 100%;  /* Optional, makes inputs fill the container width */
+}

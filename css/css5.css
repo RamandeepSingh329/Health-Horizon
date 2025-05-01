@@ -55,24 +55,24 @@ body::after {
 }
 
 .container {
+    position: relative; /* Make sure the pseudo-elements are positioned relative to the container */
     width: 85%;
     max-width: 900px;
-    padding: 40px; /* Slightly more padding */
-    background-color: #f9f9f9; /* Light gray background */
-    border-radius: 20px; /* Even more rounded */
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15); /* Softer, wider shadow */
-    margin: 40px auto; /* Center the container with more top/bottom margin */
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smoother, standard ease-in-out */
-    border: 1px solid #e0e0e0; /* Subtle border */
+    padding: 40px;
+    background-color: #f9f9f9;
+    border-radius: 20px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+    margin: 40px auto;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    border: 1px solid #e0e0e0;
 }
 
 .container:hover {
-    transform: translateY(-10px); /* Slightly more lift */
-    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.2); /* More pronounced hover shadow */
-    border-color: #ccc; /* Slightly darker border on hover */
+    transform: translateY(-10px);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.2);
+    border-color: #ccc;
 }
 
-/* Add a subtle gradient for depth */
 .container::before {
     content: '';
     position: absolute;
@@ -81,12 +81,11 @@ body::after {
     right: 0;
     bottom: 0;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.02) 0%, transparent 100%);
-    border-radius: inherit; /* Inherit border-radius from the container */
-    pointer-events: none; /* Don't interfere with mouse events */
-    z-index: -1; /* Place behind the container content */
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: -1;
 }
 
-/* Add a subtle inner shadow for a softer look */
 .container::after {
     content: '';
     position: absolute;
@@ -99,6 +98,24 @@ body::after {
     pointer-events: none;
     z-index: -1;
 }
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    .container {
+        width: 95%; /* Take up more width on smaller screens */
+        padding: 30px; /* Reduce padding */
+        margin: 20px auto; /* Slightly less top/bottom margin */
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 100%; /* Full width for very small screens */
+        padding: 20px; /* Further reduce padding */
+        margin: 10px auto; /* Even less margin */
+    }
+}
+
 
 /* Style the heading inside the container */
 .container h2 {
@@ -152,7 +169,7 @@ body::after {
     color: white;
     border: none;
     padding: 12px 25px;
-    border-radius: 8px;
+    border-radius: 30px; /* Increased border-radius for more circular edges */
     cursor: pointer;
     font-size: 16px;
     font-weight: 500;
@@ -161,6 +178,7 @@ body::after {
     position: relative; /* To ensure button text stays above particles initially */
     z-index: 1; /* Ensure button is above particles initially */
 }
+
 
 .container button:hover {
     background-color: #0056b3;
@@ -572,5 +590,136 @@ button:hover {
 
     .main-nav ul li a i {
         margin-right: 10px;
+    }
+}
+.container input {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    border: 1px solid #ccc;
+    border-radius: 30px; /* Circular edges */
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease; /* Smooth transition for focus and hover */
+    outline: none; /* Remove the default outline */
+}
+
+.container input:hover {
+    border-color: #007bff; /* Change border color on hover */
+    background-color: #f0f8ff; /* Light background on hover */
+}
+
+.container input:focus {
+    border-color: #007bff; /* Highlight the border on focus */
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.4); /* Blue shadow on focus */
+    background-color: #e6f0ff; /* Slightly lighter background */
+}
+
+.container input:focus::placeholder {
+    color: #007bff; /* Change placeholder color on focus */
+}
+#meal-suggestions {
+    margin-top: 40px; /* More spacing */
+    padding: 40px; /* More padding */
+    background: linear-gradient(135deg, #f0f8ff, #e8f5e9, #f0fff0); /* More color in gradient */
+    border-radius: 30px; /* Increased border-radius for rounded edges */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Deeper shadow */
+    position: relative; /* For loading overlay */
+    overflow: hidden; /* Clip gradient corners */
+    max-width: 100%; /* Ensure it does not overflow on mobile */
+    width: 90%; /* Make it slightly smaller on mobile for better fit */
+    margin: 20px auto; /* Center the container */
+}
+
+#meal-suggestions h2 {
+    color: #333;
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 2.2em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    letter-spacing: 1px;
+}
+
+#meal-suggestions ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Larger grid items */
+    gap: 25px; /* More gap */
+}
+
+#meal-suggestions li {
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly less transparency */
+    border-radius: 18px; /* More rounded */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12); /* Deeper shadow */
+    padding: 30px; /* More padding */
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease; /* Enhanced transition */
+    cursor: pointer;
+}
+
+#meal-suggestions li:hover {
+    transform: translateY(-6px); /* More lift */
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2); /* Stronger hover shadow */
+}
+
+#meal-suggestions li strong {
+    display: block;
+    font-size: 1.4em;
+    margin-bottom: 12px;
+    color: #4CAF50;
+    text-transform: uppercase; /* Uppercase meal names */
+    letter-spacing: 0.8px;
+}
+
+#meal-suggestions li p {
+    margin-bottom: 10px;
+    color: #555;
+    line-height: 1.7;
+}
+
+#meal-suggestions li .ingredients {
+    font-style: italic;
+    color: #777;
+    margin-top: 20px;
+    font-size: 0.95em;
+}
+
+/* Responsive adjustments for mobile devices */
+@media (max-width: 768px) {
+    #meal-suggestions {
+        padding: 25px; /* Reduce padding on smaller screens */
+        width: 95%; /* More width for smaller screens */
+        border-radius: 20px; /* Slightly smaller rounded edges */
+        margin: 20px auto; /* Ensure it centers properly */
+    }
+
+    #meal-suggestions ul {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjust grid to fit smaller items */
+        gap: 20px; /* Reduce gap */
+    }
+
+    #meal-suggestions li {
+        padding: 20px; /* Less padding */
+    }
+
+    #meal-suggestions h2 {
+        font-size: 1.8em; /* Slightly smaller heading */
+    }
+}
+
+@media (max-width: 480px) {
+    #meal-suggestions {
+        padding: 15px; /* Further reduce padding */
+        border-radius: 15px; /* Even more rounded edges */
+    }
+
+    #meal-suggestions ul {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjust grid for very small screens */
+        gap: 15px; /* Smaller gap */
+    }
+
+    #meal-suggestions li {
+        padding: 15px; /* Less padding */
     }
 }

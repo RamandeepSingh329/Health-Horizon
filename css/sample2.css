@@ -18,26 +18,26 @@
     min-height: 100vh;
   }
   
-  /* === CONTAINER === */
-  .container {
-    max-width: 600px;
-    width: 90%;
-    margin: 60px auto;
-    padding: 30px 20px;
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 20px;
-    backdrop-filter: blur(15px);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    text-align: center;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-    box-sizing: border-box;
-  }
-  
-  .container:hover {
-    transform: scale(1.02);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
-  }
-  
+/* === CONTAINER === */
+.container {
+  max-width: 600px;
+  width: 90%;
+  margin: 60px auto;
+  padding: 30px 20px;
+  background: rgba(255, 255, 255, 0.3); /* White smoke color with transparency */
+  border-radius: 30px; /* Increased border-radius for more circular corners */
+  backdrop-filter: blur(15px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-sizing: border-box;
+}
+
+/* Hover effect on container */
+.container:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+}
   /* === HEADINGS === */
   h1 {
     font-size: 2em;
@@ -66,93 +66,141 @@
     width: 100px;
   }
   
-  /* === INPUT FIELD === */
-  input[type="text"] {
-    width: 100%;
-    padding: 12px;
-    margin: 15px 0;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.25);
-    color: #fff;
-    font-size: 1em;
-    outline: none;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
-    box-sizing: border-box;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
+/* === INPUT FIELD === */
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  margin: 15px 0;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 25px; /* Circular corners for input box */
+  background: rgba(255, 255, 255, 0.25); /* Transparent background with a hint of white */
+  color: #fff;
+  font-size: 1em;
+  outline: none;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  box-sizing: border-box;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* Placeholder styling for input */
+input[type="text"]::placeholder {
+  color: #ddd;
+}
+
+/* Hover and focus effect on input */
+input[type="text"]:hover,
+input[type="text"]:focus {
+  border-color: #00e676;
+  box-shadow: 0 0 12px rgba(0, 230, 118, 0.6);
+  transform: scale(1.02);
+  background: rgba(255, 255, 255, 0.35); /* Slightly more visible background on focus/hover */
+}
+/* === BUTTON === */
+button {
+  width: 100%;
+  padding: 12px;
+  font-size: 1.1em;
+  border: none;
+  border-radius: 25px; /* Circular corners for the button */
+  background: linear-gradient(135deg, #43e97b, #38f9d7);
+  color: #fff;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.4s ease, transform 0.3s ease;
+}
+
   
-  input[type="text"]::placeholder {
-    color: #ddd;
-  }
-  
-  input[type="text"]:hover,
-  input[type="text"]:focus {
-    border-color: #00e676;
-    box-shadow: 0 0 12px rgba(0, 230, 118, 0.6);
-    transform: scale(1.02);
-  }
-  
-  /* === BUTTON === */
-  button {
-    width: 100%;
-    padding: 12px;
-    font-size: 1.1em;
-    border: none;
-    border-radius: 8px;
-    background: linear-gradient(135deg, #43e97b, #38f9d7);
-    color: #fff;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    transition: background 0.4s ease, transform 0.3s ease;
-  }
-  
-  button:hover {
-    background: linear-gradient(135deg, #00e676, #00bfa5);
-    transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(0, 230, 118, 0.4);
-  }
-  
-  button::after {
-    content: '';
-    position: absolute;
-    width: 200%;
-    height: 200%;
-    top: 50%;
-    left: 50%;
-    background: rgba(255, 255, 255, 0.3);
-    transform: translate(-50%, -50%) scale(0);
-    border-radius: 50%;
-    transition: transform 0.6s ease;
-  }
-  
-  button:active::after {
-    transform: translate(-50%, -50%) scale(1);
-  }
-  
-  /* === RESULT AREA === */
-  #result {
-    margin-top: 20px;
-    font-size: 1.2em;
-    color: #fff;
+  /* Hover effect on button */
+button:hover {
+  background: linear-gradient(135deg, #00e676, #00bfa5);
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 230, 118, 0.4);
+}
+
+/* Circular effect on button during click */
+button::after {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: 50%;
+  left: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%) scale(0);
+  border-radius: 50%;
+  transition: transform 0.6s ease;
+}
+
+/* Button click effect */
+button:active::after {
+  transform: translate(-50%, -50%) scale(1);
+}
+/* === RESULT AREA === */
+#result {
+  margin-top: 20px;
+  font-size: 1.4em;
+  color: #fff;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  padding: 15px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.2); /* Light transparent background */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); /* Subtle shadow for depth */
+  animation: fadeInResult 1s ease-out;
+  font-weight: bold; /* To make the text pop */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4); /* Slight text shadow for better readability */
+  max-width: 100%;
+  display: inline-block;
+  transform: scale(0.95); /* Start with a slight scale down effect */
+}
+
+/* === Result Area Display (show class) === */
+#result.show {
+  opacity: 1;
+  transform: translateY(0) scale(1); /* Smoothly animate into full size */
+  box-shadow: 0 8px 25px rgba(0, 230, 118, 0.5); /* Highlighted shadow when showing */
+  animation: slideInResult 0.8s ease-out; /* Added sliding animation */
+}
+
+/* === Fade-Out Animation === */
+@keyframes fadeInResult {
+  0% {
     opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
+    transform: translateY(30px) scale(0.95);
   }
-  
-  #result.show {
+  100% {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
-  
-  #result.hide {
+}
+
+/* === Slide-In Animation === */
+@keyframes slideInResult {
+  0% {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(30px) scale(0.95);
   }
+  60% {
+    opacity: 0.8;
+    transform: translateY(10px) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* === Result Hide (hide class) === */
+#result.hide {
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); /* Subtle shadow when hiding */
+  transition: opacity 0.7s ease-in, transform 0.7s ease-in;
+}
   
   /* === BURST ANIMATION === */
   @keyframes burst {
