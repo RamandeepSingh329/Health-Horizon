@@ -230,9 +230,6 @@ function sendNotification(message) {
     if ('speechSynthesis' in window && enableVoiceNotifications) {
         const speechUtterance = new SpeechSynthesisUtterance(message);
         // You can customize the voice, rate, and pitch here if needed
-        // speechUtterance.voice = /* Select a specific voice */;
-        // speechUtterance.rate = 1; // Normal speed
-        // speechUtterance.pitch = 1; // Normal pitch
         window.speechSynthesis.speak(speechUtterance);
     } else if (!('speechSynthesis' in window)) {
         console.log('Text-to-speech not supported in this browser.');
