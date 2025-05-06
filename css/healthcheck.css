@@ -1,0 +1,216 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    background-color: #f0f8ff; /* Default light blueish background */
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    transition: background-color 0.5s ease-in-out; /* Smooth transition for background */
+}
+
+body.unhealthy-hover {
+    background-color: #ffe0e0; /* Light red for potentially unhealthy */
+}
+
+body.healthy-hover {
+    background-color: #e0ffe0; /* Light green for likely okay */
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.container:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 25px;
+    position: relative; /* For positioning the pseudo-element */
+    padding-bottom: 5px; /* Add some space for the underline */
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: #3498db;
+    transition: width 0.3s ease-in-out, transform 0.3s ease-in-out;
+    transform: translateX(-50%); /* Center the initial position */
+}
+
+h1:hover::after {
+    width: 100%; /* Extend the underline to full width on hover */
+}
+
+.input-area label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+.input-area label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+    transition: text-decoration 0.3s ease-in-out; /* For a smooth underline */
+}
+
+.input-area label:hover {
+    text-decoration: underline;
+}
+.input-area input[type="text"] {
+    width: calc(100% - 16px);
+    padding: 12px 18px; /* More padding for comfort */
+    margin-bottom: 20px; /* Increased margin for spacing */
+    border: 1px solid #ccc;
+    border-radius: 30px; /* More pronounced rounded corners */
+    box-sizing: border-box;
+    font-size: 16px;
+    background-color: #f8f8f8; /* Soft light gray background */
+    color: #333; /* Dark text for better readability */
+    transition: all 0.3s ease; /* Smooth transitions for all effects */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+.input-area input[type="text"]:hover {
+    border-color: #3498db; /* Blue border on hover */
+    background-color: #fff; /* White background on hover */
+    box-shadow: 0 2px 10px rgba(52, 152, 219, 0.3); /* Stronger shadow on hover */
+}
+
+.input-area input[type="text"]:focus {
+    outline: none;
+    border-color: #3498db; /* Blue border on focus */
+    background-color: #fff; /* Maintain white background on focus */
+    box-shadow: 0 0 12px rgba(52, 152, 219, 0.6); /* Glowing effect on focus */
+    color: #3498db; /* Change text color to blue for a cohesive look */
+}
+
+.input-area input[type="text"]::placeholder {
+    color: #aaa; /* Lighter placeholder text */
+    font-style: italic; /* Italicize placeholder text */
+}
+
+
+.input-area button {
+    padding: 12px 30px; /* Padding to make the button longer */
+    background-color: #3498db; /* Blue background */
+    color: white;
+    border: none;
+    border-radius: 50px; /* Cylindrical edges */
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    width: auto; /* Auto width, controlled by padding */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* Smooth transitions */
+    box-sizing: border-box;
+    letter-spacing: 1px; /* Adds spacing between letters for clarity */
+    text-transform: uppercase; /* Makes the text uppercase */
+}
+
+.input-area button:hover {
+    background-color: #2980b9; /* Darker blue on hover */
+    transform: scale(1.05); /* Slight scaling effect on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+}
+
+.input-area button:active {
+    transform: scale(0.95); /* Slight shrink on click */
+}
+
+.input-area button:focus {
+    outline: none;
+    border: 1px solid #2980b9; /* Blue border on focus */
+    box-shadow: 0 0 15px rgba(41, 128, 185, 0.4); /* Focus glow effect */
+}
+
+.input-area button:disabled {
+    background-color: #d5d8dc; /* Disabled button background color */
+    cursor: not-allowed; /* Make the cursor a not-allowed symbol */
+}
+
+
+.result-area {
+    margin-top: 30px;
+    padding: 20px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.result-area h2 {
+    color: #555;
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.result-area h2 i {
+    font-size: 1.5em;
+}
+
+#detection-result {
+    font-size: 1.3em;
+    font-weight: bold;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#detection-result i {
+    font-size: 1.8em;
+}
+
+.healthy-visual {
+    color: #27ae60;
+    background-color: #e6f9e9;
+    padding: 8px 12px;
+    border-radius: 8px;
+}
+
+.unhealthy-visual {
+    color: #c0392b;
+    background-color: #ffe9e9;
+    padding: 8px 12px;
+    border-radius: 8px;
+}
+
+#suggestion-area {
+    font-size: 1.1em;
+    color: #777;
+    background-color: #f0f0f0;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    margin-top: 15px;
+}
+
+.warning-visual {
+    color: #e67e22;
+    font-style: italic;
+    background-color: #fffaf0;
+    border: 1px solid #ffe0b2;
+}
+
+/* Add Font Awesome CDN link in your HTML <head> for icons */

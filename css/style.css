@@ -796,7 +796,7 @@ button:hover {
 :root {
     --navbar-color: #4CAF50;
     --navbar-color-hover: #45a049;
-    --navbar-focus-glow: rgba(76, 175, 80, 0.6);
+    --navbar-focus-glow: #45a049(76, 175, 80, 0.6);
   }
   
   @keyframes breathe {

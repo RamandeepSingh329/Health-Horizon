@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Health Detector</title>
+    <link rel="stylesheet" href="./css/healthcheck.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="container">
+        <h1>Food Health Detector</h1>
+        <div class="input-area">
+            <label for="food-name">Enter Food Name:</label>
+            <input type="text" id="food-name" placeholder="e.g., Pizza, Apple">
+            <button id="detect-btn">Detect</button>
+        </div>
+        <div class="result-area">
+            <h2>Detection Result:</h2>
+            <p id="detection-result"></p>
+            <p id="suggestion-area"></p>
+        </div>
+    </div>
+    <script src="./js/healthcheck.js"></script>
+</body>
+</html>
