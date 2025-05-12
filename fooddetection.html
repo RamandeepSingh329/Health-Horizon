@@ -5,41 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HealthHorizon – Expanding the limits of well-being.</title>
     <link rel="stylesheet" href="./css/healthcheck.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
           integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
           crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 <main class="container">
-    <header>
-        <header class="navbar">
-  <div class="navbar-logo">
-    <img src="./assets/logo.jpg" alt="Food Health Detector Logo" class="logo-img" />
-    <span class="logo-title">Health Horizon</span>
-  </div>
-  <nav class="navbar-links">
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="calorie tracker.html">Calorie Tracker</a></li>
-      <li><a href="meal planner.html">Meal Planner</a></li>
-      <li><a href="food calorie checker.html">Food Calorie Analyzer</a></li>
-            <li><a href="calorie intake suggester.html">Body Calorie Analyzer</a></li>
+<div class="navbar">
+    <div class="navbar-logo">
+        <img src="./assets/logo.jpg" alt="Food Health Detector Logo" class="logo-img" />
+        <span class="logo-title">Health Horizon</span>
+    </div>
 
-    </ul>
-  </nav>
-  <div class="navbar-buttons">
-    <button class="btn-primary">Sign Up</button>
-    <button class="btn-secondary">Login</button>
-  </div>
-  <div class="navbar-toggle" onclick="toggleMenu()">
-    <i class="fas fa-bars"></i>
-  </div>
-</header>
-
-
+    <div class="dropdown-menu">
+        <button class="dropdown-toggle">
+            <i class="fas fa-bars"></i> Menu
+        </button>
+        <div class="dropdown-content">
+            <nav class="navbar-links-dropdown">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="calorie tracker.html">Calorie Tracker</a></li>
+                    <li><a href="meal planner.html">Meal Planner</a></li>
+                    <li><a href="food calorie checker.html">Food Calorie Analyzer</a></li>
+                    <li><a href="calorie intake suggester.html">Body Calorie Analyzer</a></li>
+                </ul>
+            </nav>
+            
+        </div>
+    </div>
+</div>
         <h1><i class="fas fa-apple-alt"></i> Food Health Detector</h1>
     </header>
+<body>
+    <script>
+        const dropdownToggle = document.querySelector('.dropdown-toggle');
+        const dropdownContent = document.querySelector('.dropdown-content');
 
+        if (dropdownToggle && dropdownContent) {
+            dropdownToggle.addEventListener('click', () => {
+                dropdownContent.classList.toggle('open');
+            });
+        }
+    </script>
+</body>
     <section class="image-detection" aria-labelledby="image-label">
         <h3 id="image-label"><i class="fas fa-camera"></i>  Upload a Food Image:</h3>
         <div class="file-input-wrapper">
