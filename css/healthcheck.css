@@ -10,20 +10,28 @@ body {
     min-height: 100vh; /* Ensure the body takes at least the full viewport height */
     padding: 30px; /* Add some padding around the content */
     box-sizing: border-box; /* Include padding in the element's total width and height */
+      padding-top: 60px; /* Adjust this value to match the height of your navbar */
+
 }
 
-/* Updated Styles for .container */
+/* Enhanced Styles for .container */
 .container {
-    background-color: #ffffff; /* White container background */
+    background-color: #f9f9f9; /* Fallback color for gradient */
+    background-image: linear-gradient(to bottom right, #f0f0f0, #ffffff); /* Subtle gradient */
     border-radius: 16px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1); /* More pronounced shadow for depth */
-    padding: 40px; /* Increased padding inside the container */
-    width: 90%; /* Take up 90% of the viewport width */
-    max-width: 700px; /* Set a maximum width for larger screens */
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2); /* Increased vertical offset, blur, and slightly darker opacity */
+    padding: 40px;
+    width: 90%;
+    max-width: 700px;
     display: flex;
-    flex-direction: column; /* Stack elements vertically inside the container */
-    align-items: stretch; /* Make child elements take the full width of the container */
+    flex-direction: column;
+    align-items: stretch;
+    padding-top: 20px;
+    margin-top: 20px; /* Reduced margin-top since no navbar is assumed */
+    margin-left: auto;
+    margin-right: auto;
 }
+
 
 /* Style for the header within the container */
 .container header {
@@ -753,12 +761,19 @@ h1 i:hover {
     cursor: pointer;
 }
 h3 {
-  font-size: 2rem;
-  font-weight: bold;
-  color: transparent;
-  background: url('../assets/logo.jpg') no-repeat center center;
-  background-size: cover;
-  -webkit-background-clip: text;
+    font-size: 2rem;
+    font-weight: bold;
+    color: transparent;
+    background: url('../assets/logo.jpg') no-repeat center center;
+    background-size: 200% auto; /* Slightly larger than the text area */
+    background-position: 0% center;
+    background-clip: text;
+    -webkit-background-clip: text;
+    transition: background-position 3s ease-in-out;
+}
+
+h3:hover {
+    background-position: 100% center; /* Move the background on hover */
 }
 h2 {
   color: #333;
@@ -777,17 +792,25 @@ h2 i.fas.fa-search {
   margin-right: 6px;
   color: inherit;
 }
-
 #detection-result {
-  color: #444;
-  font-size: 1.05em;
-  padding: 12px 20px;
-  border-radius: 7px;
-  background: linear-gradient(to right, #f0f0f0, #f0f0f0 50%, transparent 50%, transparent);
-  background-size: 200% 100%;
-  background-position: 0%;
-  transition: background-position 0.4s ease-in-out, color 0.3s ease-in-out, border 0.3s ease-in-out;
-  border: 2px solid transparent; /* Initially transparent border */
+    color: #444;
+    font-size: 1.05em;
+    padding: 12px 20px;
+    border-radius: 7px;
+    background: linear-gradient(to right, #f0f0f0, #f0f0f0 50%, transparent 50%, transparent);
+    background-size: 200% 100%;
+    background-position: 0%;
+    transition: background-position 0.4s ease-in-out, color 0.3s ease-in-out, border 0.3s ease-in-out, transform 0.2s ease-in-out;
+    border: 2px solid transparent;
+}
+
+#detection-result:hover,
+#detection-result:focus {
+    background-position: 100%;
+    color: #fff;
+    border-color: #007bff;
+    transform: translateY(-2px); /* Slightly lift the element */
+    /* transform: skewX(-5deg); /* Subtle skew */
 }
 
 #detection-result:hover {
