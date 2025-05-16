@@ -533,21 +533,124 @@ button:active {
 
 
 
-
 footer {
     text-align: center;
-    padding: 10px 0;
-    background-color: #f4f4f4;
+    padding: 16px 12px;
+    background: linear-gradient(to right, rgba(240, 240, 240, 0.5), rgba(232, 232, 232, 0.5)); /* 50% transparent gradient */
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    color: rgba(51, 51, 51, 0.7); /* Slightly transparent text */
+    overflow: hidden;
+    transition: background 0.4s ease, color 0.3s ease;
+}
+
+/* Hover effect to make text pop */
+footer p {
+    margin: 0;
+    position: relative;
+    transition: color 0.4s ease, transform 0.3s ease, text-shadow 0.3s ease;
+    display: inline-block;
+}
+
+/* Subtle hover underline and glowing effect */
+footer p:hover {
+    color: #4CAF50; /* Green hover color */
+    transform: scale(1.05); /* Slight scale effect */
+    text-shadow: 0 0 10px rgba(76, 175, 80, 0.6); /* Soft green glow */
+}
+
+/* Hover underline effect */
+footer p::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: #4CAF50;
+    transition: width 0.4s ease-in-out;
+}
+
+/* Expand underline on hover */
+footer p:hover::after {
+    width: 100%;
+}
+
+/* Optional: soft transition effect for footer background */
+footer:hover {
+    background: linear-gradient(to right, rgba(232, 232, 232, 0.5), rgba(240, 240, 240, 0.5)); /* Subtle background change on hover */
+}
+
+/* Footer text */
+footer p {
+    margin: 0;
+    transition: color 0.4s ease, transform 0.3s ease, text-shadow 0.3s ease;
+    display: inline-block;
+}
+
+/* Interactive hover effect */
+footer p:hover {
+    color: #4CAF50;
+    transform: scale(1.05);
+    text-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+}
+
+/* Animated underline on hover */
+footer p::after {
+    content: '';
+    display: block;
+    height: 2px;
+    width: 0;
+    margin: 4px auto 0;
+    background-color: #4CAF50;
+    transition: width 0.4s ease;
+    border-radius: 2px;
+}
+
+footer p:hover::after {
+    width: 50%;
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+    footer {
+        font-size: 13px;
+        padding: 12px 8px;
+    }
 }
 
 footer p {
     margin: 0;
-    transition: color 0.3s ease, transform 0.3s ease;
+    font-size: 14px;
+    color: #333;
+    letter-spacing: 0.4px;
+    transition: color 0.4s ease, transform 0.4s ease, text-shadow 0.4s ease;
+    display: inline-block;
 }
 
+/* Interactive hover effect */
 footer p:hover {
     color: #4CAF50;
-    transform: scale(1.05);
+    transform: scale(1.08);
+    text-shadow: 0 0 6px rgba(76, 175, 80, 0.4);
+}
+
+/* Optional: Animated underline effect */
+footer p::after {
+    content: '';
+    display: block;
+    height: 2px;
+    width: 0%;
+    background-color: #4CAF50;
+    transition: width 0.4s ease;
+    margin: 4px auto 0;
+    border-radius: 2px;
+}
+
+footer p:hover::after {
+    width: 50%;
 }
 
 /* Responsive Design */
