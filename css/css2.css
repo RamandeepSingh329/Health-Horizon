@@ -93,12 +93,35 @@ header {
 }
 
 .header-title {
-    transition: transform 0.3s ease, color 0.3s ease;
-    color: black; /* Changed from gradient to solid black */
+    color: black; /* Solid black text */
     background: none;
     -webkit-background-clip: unset;
     -webkit-text-fill-color: unset;
-    animation: none;
+    animation: none,
+               typing 2s steps(20, end) /* Typing animation */
+               ;
+    overflow: hidden; /* Ensures the blinking cursor is contained */
+    white-space: nowrap; /* Prevents text from wrapping */
+    border-right: .05em solid black; /* Blinking cursor */
+    margin: 0 auto; /* Center the text if needed */
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+.header-title:hover {
+    transform: scale(1.1);
+    color: #007BFF;
+    cursor: pointer; /* Add a pointer cursor on hover for better interaction */
+    animation: none, /* Remove typing animation on hover */
+               blinking-cursor 0.8s step-end infinite; /* Add blinking cursor animation on hover */
+}
+
+@keyframes blinking-cursor {
+    from, to { border-color: transparent }
+    50% { border-color: #007BFF; } /* Match hover color */
 }
 
 @keyframes text-move {
@@ -110,13 +133,6 @@ header {
     50% {
         background-position: 100% 50%;
     }
-}
-
-.header-title:hover {
-    transform: scale(1.1);
-    /* Scale up the text on hover */
-    color: #007BFF;
-    /* Change text color on hover */
 }
 
 nav {

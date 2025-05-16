@@ -85,59 +85,100 @@ header {
     transform: scale(1.05);
 }
 
+/* Base styles for logo h1 */
 .logo h1 {
     font-size: 24px;
     margin: 0;
     color: #333;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
     transform-origin: center center;
+    white-space: nowrap;
+    overflow: hidden;
+    font-family: 'Courier New', Courier, monospace; /* Monospaced font for typewriter look */
+    animation: typewriter 4s steps(40) 1s infinite, blinking-cursor 0.75s step-end infinite;
+    display: inline-block;
 }
 
-@keyframes expandBlurRotate {
+/* Typewriter effect */
+@keyframes typewriter {
     0% {
-        transform: scale(1); /* Removed rotate(0deg) */
-        filter: blur(0px);
+        width: 0;
+        color: white; /* Start with orange color */
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Light shadow for start */
+        border-right: 3px solid black; /* Orange cursor */
     }
     50% {
-        transform: scale(1.5); /* Removed rotate(0deg) */
-        filter: blur(5px);
+        color: grey; /* Change to light blue halfway */
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); /* Stronger shadow */
     }
     100% {
-        transform: scale(1); /* Removed rotate(360deg) */
-        filter: blur(0px);
+        width: 100%;
+        color: black; /* Final green color */
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6); /* Strong shadow for final effect */
+        border-right: none; /* Remove cursor after typing is complete */
     }
 }
 
-/* Keep the hover effect if you still want it */
-.logo h1:hover {
-    transform: scale(1.1) rotate(0deg); /* Still scaling on hover, rotation is already removed from the animation */
-    filter: blur(0);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-    color: #007bff;
+/* Blinking cursor animation */
+@keyframes blinking-cursor {
+    0% {
+        border-right: 3px solid grey; /* Start cursor visible */
+    }
+    50% {
+        border-right: 3px solid whitesmoke; /* Cursor invisible */
+    }
+    100% {
+        border-right: 3px solid black; /* Cursor visible again */
+    }
 }
-/* Keep the base styles for the other headings */
+
+/* Hover effect on .logo h1 */
+.logo h1:hover {
+    animation: typewriter 2s steps(40) 1s forwards, glowing-text 1.5s ease-in-out infinite alternate; /* Speed up typewriter on hover */
+    color: #007bff; /* Change color on hover */
+    transform: scale(1.1); /* Make it slightly larger on hover */
+    text-shadow: 2px 2px 8px rgba(0, 123, 255, 0.7); /* Enhance text shadow */
+}
+
+/* Glowing text effect (on hover) */
+@keyframes glowing-text {
+    0% {
+        text-shadow: 0 0 10px white, 0 0 20px whitesmoke, 0 0 30px grey, 0 0 40px black;
+    }
+    100% {
+        text-shadow: 0 0 15px grey, 0 0 25px white, 0 0 35px whitesmoke, 0 0 45px black;
+    }
+}
+
+/* Base styles for tracker-title and diet-tips-heading */
 .tracker-title, .diet-tips-heading {
     font-size: 24px;
     margin: 0;
     color: #333;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
     transition: text-shadow 0.3s ease-in-out, color 0.3s ease-in-out;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
+/* Hover effect on tracker-title and diet-tips-heading */
 .tracker-title:hover, .diet-tips-heading:hover {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     color: #007bff;
 }
-  
+
+/* Specific styles for tracker-title */
 .tracker-title {
     color: whitesmoke;
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
+/* Hover effect on tracker-title */
 .tracker-title:hover {
     color: #007BFF;
     transform: scale(1.1);
 }
+
 
 nav {
     flex-grow: 1;
@@ -493,57 +534,21 @@ button:active {
 
 .diet-tips-heading {
     position: relative;
-    display: inline-block;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-.diet-tips-heading{
-    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    font-size: 30px;
+    font-weight: bold;
+    text-transform: capitalize;
+    transition: all 0.4s ease;
 }
 
 .diet-tips-heading:hover {
-    transform: scale(1.1);
-    color: #4CAF50;
-    text-shadow: 0 0 15px rgba(76, 175, 80, 0.5);
+    transform: translateY(-5px) scale(1.1);
+    text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2), -5px -5px 10px rgba(0, 0, 0, 0.2);
 }
 
 .diet-tips-heading:active {
     transform: scale(0.95);
 }
 
-.diet-tips-heading::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, rgba(76, 175, 80, 0.3) 0%, transparent 70%);
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    transition: all 0.5s ease;
-}
-
-.diet-tips-heading:hover::after {
-    opacity: 1;
-    width: 150%;
-    height: 150%;
-}
-
-.diet-tips-heading::before {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: #4CAF50;
-    transition: width 0.3s ease;
-}
-
-.diet-tips-heading:hover::before {
-    width: 100%;
-}
 
 footer {
     text-align: center;
