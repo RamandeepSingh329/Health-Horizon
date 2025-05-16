@@ -81,15 +81,13 @@ body {
 
 header {
     display: flex;
-    /* Use flexbox for layout */
     align-items: center;
-    /* Center items vertically */
-background-color: rgba(34, 139, 34, 0.8);    /* Semi-transparent header */
-    color: white;
-    /* White text */
+    background-color: #228B22; /* Solid green background */
+    color: white; /* White text */
     padding: 10px 20px;
-    /* Padding */
+    transition: background-color 0.3s ease; /* Smooth background color transition */
 }
+
 
 .header-title {
     color: black; /* Solid black text */
