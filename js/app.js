@@ -440,7 +440,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener("DOMContentLoaded", function () {
     const quotes = [
-        "Your health isn’t an expense—it’s the best investment you’ll ever make. Prioritize it today for a stronger, happier fture",
+        "Your health isn’t an expense—it’s the best investment you’ll ever make. Prioritize it today for a stronger, happier future",
         "Every bite is a choice that shapes your journey—make it count, and move closer to your goal with every delicious step!",
         "Discipline is the art of choosing lasting success over fleeting desires—stay focused on what matters most!",
         "Eat to energize and nourish your body—let food be your strength, not your comfort."
