@@ -989,3 +989,123 @@ input[type="text"]:focus, input[type="number"]:focus, select:focus {
     border-color: #007bff;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
+.typewriter-text {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.6em;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    border-right: 4px solid #333;
+    width: 0;
+    margin-top: 15px;
+    max-width: 100%;
+    padding-right: 7px;
+    letter-spacing: 1.5px;
+    transform-origin: left center; /* For potential scaling/rotation */
+    perspective: 500px; /* Establish a 3D perspective */
+    text-shadow:
+        0.05em 0.05em 0 #ccc,
+        0.1em 0.1em 0 #bbb,
+        0.15em 0.15em 0 #aaa,
+        0.2em 0.2em 0 #999,
+        0.25em 0.25em 0 #888,
+        0.3em 0.3em 5px rgba(0, 0, 0, 0.2);
+    animation:
+        fadein-up 0.6s ease-out,
+        typing-3d-reveal 4s steps(40, end) forwards,
+        blink-caret 0.6s step-end infinite;
+}
+
+@keyframes fadein-up {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes typing-3d-reveal {
+    from {
+        width: 0;
+        transform: rotateY(-10deg) translateZ(-10px); /* Start slightly rotated and pushed back */
+        opacity: 0.8;
+    }
+    to {
+        width: 100%;
+        transform: rotateY(0deg) translateZ(0px);    /* End with no rotation or Z-translation */
+        opacity: 1;
+    }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #333 }
+}
+@keyframes blink-caret {
+    0%, 100% { border-color: transparent }
+    50% { border-color: #2c3e50 }
+}
+.health-asset {
+  background-color: #f0fff0; /* Light green background for a health-related feel */
+  color: #2e8b57; /* Sea green for a calming and healthy vibe */
+  padding: 20px;
+  border-radius: 10px; /* Soft rounded corners */
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.health-asset h3 {
+  font-size: 2.5em;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05); /* Slight text shadow for emphasis */
+}
+
+.health-asset span {
+  color: #daa520; /* Goldenrod for the sparkle effect */
+  font-size: 1.2em;
+}
+
+/* Keyframes for a subtle pulsating animation on the sparkle */
+@keyframes sparkle {
+  0% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.health-asset span.sparkle {
+  display: inline-block; /* Allows animation */
+  animation: sparkle 1.5s ease-in-out infinite alternate;
+}
+#quote-display {
+    font-weight: bold; /* Make the displayed quote stand out */
+    color: black; /* Black color for the main text */
+    white-space: nowrap; /* Prevent wrapping of the text */
+    overflow: hidden; /* Hide the text that hasn't been typed yet */
+    border-right: .15em solid #d3d3d3; /* Light gray cursor */
+    padding-right: .1em; /* Space for the cursor */
+    letter-spacing: .05em; /* Slight letter spacing for readability */
+    text-shadow:
+        0.03em 0.03em 0 darkgrey,             /* Dark grey layer 1 */
+        0.06em 0.06em 0 rgba(245, 245, 245, 0.7), /* White smoke layer 2 (increased opacity) */
+        0.09em 0.09em 0 grey;                  /* Medium grey layer 3 */
+    animation: blink-caret 0.75s step-end infinite; /* Blinking cursor animation */
+    transition: text-shadow 0.3s ease-in-out; /* Smooth transition for hover effects */
+    font-size: 1.4em; /* Increased font size for better visibility */
+    /* Remove background and padding if you don't want a box */
+    /* padding: 10px; */
+    /* border-radius: 5px; */
+}
+
+
+#quote-display:hover {
+    text-shadow:
+        0.05em 0.05em 0 darkgrey,
+        0.1em 0.1em 0 rgba(245, 245, 245, 0.8), /* Slightly stronger white smoke on hover */
+        0.15em 0.15em 0 grey;
+    cursor: pointer; /* Indicate it's interactive on hover */
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #d3d3d3; }
+}

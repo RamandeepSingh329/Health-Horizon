@@ -425,3 +425,54 @@ document.addEventListener('DOMContentLoaded', () => {
     updatePieChart();
     updateBarGraph();
 });
+        // JavaScript for TDEE Calculation
+        function calculateTDEE() {
+            let age = document.getElementById('age').value;
+            let weight = document.getElementById('weight').value;
+            let height = document.getElementById('height').value;
+            let activity = document.getElementById('activity').value;
+            let tdee = (10 * weight) + (6.25 * height) - (5 * age) + 5; // Basic TDEE calculation formula for men
+
+            tdee = tdee * activity; // Adjust for activity level
+
+            document.getElementById('tdee-output').innerText = `Your Total Daily Energy Expenditure (TDEE) is: ${tdee.toFixed(2)} kcal`;
+        }
+
+document.addEventListener("DOMContentLoaded", function () {
+    const quotes = [
+        "Your health isn’t an expense—it’s the best investment you’ll ever make. Prioritize it today for a stronger, happier future!",
+        "Every bite is a choice that shapes your journey—make it count, and move closer to your goal with every delicious step!",
+        "Discipline is the art of choosing lasting success over fleeting desires—stay focused on what matters most!",
+        "Eat to energize and nourish your body—let food be your strength, not your comfort."
+    ];
+
+    const quoteElement = document.getElementById("quote-display");
+    let quoteIndex = 0;
+    const typingSpeed = 50; // Adjust for typing speed (milliseconds per character)
+    const pauseBetweenQuotes = 3000; // 3 seconds
+
+    function typeWriter(text, index, callback) {
+        if (index < text.length) {
+            quoteElement.textContent += text.charAt(index);
+            setTimeout(() => typeWriter(text, index + 1, callback), typingSpeed);
+        } else if (callback) {
+            setTimeout(callback, pauseBetweenQuotes);
+        }
+    }
+
+    function showNextQuote() {
+        if (quoteElement) {
+            quoteElement.textContent = '';
+            const currentQuote = quotes[quoteIndex];
+
+            typeWriter(currentQuote, 0, () => {
+                quoteIndex = (quoteIndex + 1) % quotes.length;
+                setTimeout(showNextQuote, pauseBetweenQuotes);
+            });
+        } else {
+            console.error("Error: quote-display element not found!");
+        }
+    }
+
+    showNextQuote();
+});
