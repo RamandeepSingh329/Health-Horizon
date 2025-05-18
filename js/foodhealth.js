@@ -1,245 +1,196 @@
-    let net;
+let net;
 
-    // Updated junkFoodDetails to include 'sideEffects'
-    const junkFoodDetails = {
-        "pizza": {
-            explanation: "Often high in refined carbohydrates, unhealthy saturated fats, and sodium.",
-            nutritionalAspects: ["High in calories", "High in saturated fat", "High in sodium"],
-            advice: "Consume in moderation.",
-            sideEffects: "Frequent consumption may lead to weight gain, increased risk of heart disease, and high blood pressure."
-        },
-        "burger": {
-            explanation: "Typically contains a processed meat patty high in saturated fat and cholesterol.",
-            nutritionalAspects: ["High in saturated fat", "High in cholesterol", "Moderate to high in sodium"],
-            advice: "Choose lean meat and whole-wheat buns.",
-            sideEffects: "Excessive intake may contribute to obesity and heart disease."
-        },
-        "fries": {
-            explanation: "Deep-fried potatoes high in unhealthy fats and calories.",
-            nutritionalAspects: ["High in calories", "High in unhealthy fats", "High in sodium"],
-            advice: "Try baked or air-fried alternatives.",
-            sideEffects: "Regular consumption can increase the risk of weight gain and cardiovascular problems."
-        },
-        "soda": {
-            explanation: "Loaded with added sugars and empty calories.",
-            nutritionalAspects: ["Extremely high in added sugars", "High in calories"],
-            advice: "Limit or avoid entirely.",
-            sideEffects: "Long-term consumption can lead to obesity, diabetes, and tooth decay."
-        },
-        "coke": {
-            explanation: "Very high in added sugars and provides no nutritional benefits.",
-            nutritionalAspects: ["Extremely high in added sugars", "High in calories"],
-            advice: "Limit or avoid entirely.",
-            sideEffects: "Can increase the risk of metabolic disorders, obesity, and type 2 diabetes."
-        },
-        "pepsi": {
-            explanation: "Similar to Coke, high sugar content with no nutritional value.",
-            nutritionalAspects: ["Extremely high in added sugars", "High in calories"],
-            advice: "Limit or avoid entirely.",
-            sideEffects: "Can contribute to obesity and diabetes."
-        },
-        "donut": {
-            explanation: "Deep-fried and coated in sugar, high in unhealthy fats and added sugars.",
-            nutritionalAspects: ["High in saturated and trans fats", "Very high in added sugars"],
-            advice: "Consider healthier breakfast options.",
-            sideEffects: "Can contribute to weight gain and increased risk of heart disease."
-        },
-        "cake": {
-            explanation: "Often high in refined flour, sugar, and unhealthy fats.",
-            nutritionalAspects: ["High in refined carbohydrates", "High in added sugars", "High in unhealthy fats"],
-            advice: "Enjoy in small portions.",
-            sideEffects: "Frequent consumption increases the risk of diabetes and obesity."
-        },
-        "cookie": {
-            explanation: "Many are high in sugar and unhealthy fats.",
-            nutritionalAspects: ["High in added sugars", "High in unhealthy fats"],
-            advice: "Choose whole-grain options in moderation.",
-            sideEffects: "Can lead to weight gain and increased risk of diabetes and heart disease."
-        },
-        "candy": {
-            explanation: "Primarily made of sugar with no essential nutrients.",
-            nutritionalAspects: ["Very high in added sugars"],
-            advice: "Limit significantly.",
-            sideEffects: "Contributes to tooth decay, blood sugar spikes, and potential weight gain."
-        },
-        "chocolate": {
-            explanation: "Many commercial types are high in sugar and unhealthy fats.",
-            nutritionalAspects: ["High in added sugars (most types)", "Moderate to high in unhealthy fats (most types)"],
-            advice: "Choose dark chocolate in moderation.",
-            sideEffects: "High sugar content can lead to obesity."
-        },
-        "ice cream": {
-            explanation: "High in sugar and unhealthy saturated fats.",
-            nutritionalAspects: ["High in added sugars", "High in saturated fat", "High in calories"],
-            advice: "Enjoy as an occasional treat.",
-            sideEffects: "Excessive intake can contribute to weight gain and heart disease."
-        },
-        "chips": {
-            explanation: "Deep-fried and high in unhealthy fats and sodium.",
-            nutritionalAspects: ["High in unhealthy fats", "High in sodium"],
-            advice: "Opt for baked alternatives.",
-            sideEffects: "Can lead to obesity and high blood pressure."
-        },
-        "crisps": {
-            explanation: "Similar to chips, high in unhealthy fats and sodium.",
-            nutritionalAspects: ["High in unhealthy fats", "High in sodium"],
-            advice: "Choose healthier snack alternatives.",
-            sideEffects: "Can negatively impact heart health."
+// Updated junkFoodDetails to include 'sideEffects'
+const junkFoodDetails = {
+    "pizza": {
+        explanation: "Often high in refined carbohydrates, unhealthy saturated fats, and sodium.",
+        nutritionalAspects: ["High in calories", "High in saturated fat", "High in sodium"],
+        advice: "Consume in moderation.",
+        sideEffects: "Frequent consumption may lead to weight gain, increased risk of heart disease, and high blood pressure."
+    },
+    "burger": {
+        explanation: "Typically contains a processed meat patty high in saturated fat and cholesterol.",
+        nutritionalAspects: ["High in saturated fat", "High in cholesterol", "Moderate to high in sodium"],
+        advice: "Choose lean meat and whole-wheat buns.",
+        sideEffects: "Excessive intake may contribute to obesity and heart disease."
+    },
+    "fries": {
+        explanation: "Deep-fried potatoes high in unhealthy fats and calories.",
+        nutritionalAspects: ["High in calories", "High in unhealthy fats", "High in sodium"],
+        advice: "Try baked or air-fried alternatives.",
+        sideEffects: "Regular consumption can increase the risk of weight gain and cardiovascular problems."
+    },
+    "soda": {
+        explanation: "Loaded with added sugars and empty calories.",
+        nutritionalAspects: ["Extremely high in added sugars", "High in calories"],
+        advice: "Limit or avoid entirely.",
+        sideEffects: "Long-term consumption can lead to obesity, diabetes, and tooth decay."
+    },
+    "coke": {
+        explanation: "Very high in added sugars and provides no nutritional benefits.",
+        nutritionalAspects: ["Extremely high in added sugars", "High in calories"],
+        advice: "Limit or avoid entirely.",
+        sideEffects: "Can increase the risk of metabolic disorders, obesity, and type 2 diabetes."
+    },
+    "pepsi": {
+        explanation: "Similar to Coke, high sugar content with no nutritional value.",
+        nutritionalAspects: ["Extremely high in added sugars", "High in calories"],
+        advice: "Limit or avoid entirely.",
+        sideEffects: "Can contribute to obesity and diabetes."
+    },
+    "donut": {
+        explanation: "Deep-fried and coated in sugar, high in unhealthy fats and added sugars.",
+        nutritionalAspects: ["High in saturated and trans fats", "Very high in added sugars"],
+        advice: "Consider healthier breakfast options.",
+        sideEffects: "Can contribute to weight gain and increased risk of heart disease."
+    },
+    "cake": {
+        explanation: "Often high in refined flour, sugar, and unhealthy fats.",
+        nutritionalAspects: ["High in refined carbohydrates", "High in added sugars", "High in unhealthy fats"],
+        advice: "Enjoy in small portions.",
+        sideEffects: "Frequent consumption increases the risk of diabetes and obesity."
+    },
+    "cookie": {
+        explanation: "Many are high in sugar and unhealthy fats.",
+        nutritionalAspects: ["High in added sugars", "High in unhealthy fats"],
+        advice: "Choose whole-grain options in moderation.",
+        sideEffects: "Can lead to weight gain and increased risk of diabetes and heart disease."
+    },
+    "candy": {
+        explanation: "Primarily made of sugar with no essential nutrients.",
+        nutritionalAspects: ["Very high in added sugars"],
+        advice: "Limit significantly.",
+        sideEffects: "Contributes to tooth decay, blood sugar spikes, and potential weight gain."
+    },
+    "chocolate": {
+        explanation: "Many commercial types are high in sugar and unhealthy fats.",
+        nutritionalAspects: ["High in added sugars (most types)", "Moderate to high in unhealthy fats (most types)"],
+        advice: "Choose dark chocolate in moderation.",
+        sideEffects: "High sugar content can lead to obesity."
+    },
+    "ice cream": {
+        explanation: "High in sugar and unhealthy saturated fats.",
+        nutritionalAspects: ["High in added sugars", "High in saturated fat", "High in calories"],
+        advice: "Enjoy as an occasional treat.",
+        sideEffects: "Excessive intake can contribute to weight gain and heart disease."
+    },
+    "chips": {
+        explanation: "Deep-fried and high in unhealthy fats and sodium.",
+        nutritionalAspects: ["High in unhealthy fats", "High in sodium"],
+        advice: "Opt for baked alternatives.",
+        sideEffects: "Can lead to obesity and high blood pressure."
+    },
+    "crisps": {
+        explanation: "Similar to chips, high in unhealthy fats and sodium.",
+        nutritionalAspects: ["High in unhealthy fats", "High in sodium"],
+        advice: "Choose healthier snack alternatives.",
+        sideEffects: "Can negatively impact heart health."
+    }
+};
+
+// Helper to match food keys flexibly
+function getMatchingJunkFoodKey(foodName) {
+    const lowerName = foodName.toLowerCase();
+    for (const key in junkFoodDetails) {
+        if (lowerName.includes(key)) {
+            return key;
         }
-        // Add more junk food items with their side effects
+    }
+    return null;
+}
+
+// Function to check if a food item is considered junk food
+function isJunkFood(foodName) {
+    return getMatchingJunkFoodKey(foodName) !== null;
+}
+
+// Function to get potential side effects of junk food
+function getJunkFoodSideEffects(foodName) {
+    const matchedKey = getMatchingJunkFoodKey(foodName);
+    return matchedKey ? junkFoodDetails[matchedKey].sideEffects : null;
+}
+
+// Function to analyze manually entered food name
+function analyzeFoodName(foodName) {
+    const cleanedFoodName = foodName.trim().toLowerCase();
+    if (!cleanedFoodName) {
+        alert("Please say or type a food name.");
+        return;
+    }
+
+    document.getElementById("detection-result").textContent = "Analyzing food name...";
+    document.getElementById("suggestion-area").textContent = '';
+    document.getElementById("confidence-score").textContent = '';
+
+    displayResult([{ className: cleanedFoodName }], 'manual');
+}
+
+// Display the results of the detection with more detail
+function displayResult(predictions, source) {
+    const detectionResultDiv = document.getElementById("detection-result");
+    const suggestionAreaParagraph = document.getElementById("suggestion-area");
+    const confidenceScoreParagraph = document.getElementById("confidence-score");
+
+    if (predictions.length > 0) {
+        const foodItem = predictions[0].className.toLowerCase();
+        detectionResultDiv.textContent = `Detected: ${foodItem} (${source === 'manual' ? 'Manual Input' : 'Voice Input'})`;
+
+        const detailedSuggestion = provideSuggestion(foodItem, source);
+        suggestionAreaParagraph.innerHTML = detailedSuggestion;
+
+        if (source === 'manual' && isJunkFood(foodItem)) {
+            const sideEffects = getJunkFoodSideEffects(foodItem);
+            if (sideEffects) {
+                suggestionAreaParagraph.innerHTML += `<br><br><strong>Potential Health Side Effects:</strong> ${sideEffects}`;
+            }
+        }
+    } else {
+        detectionResultDiv.textContent = source === 'manual' ? "No information found for the entered food name." : "No food detected.";
+        suggestionAreaParagraph.textContent = "";
+        confidenceScoreParagraph.textContent = "";
+    }
+}
+
+// Provide suggestion with detailed health explanation
+function provideSuggestion(foodName, source) {
+    const matchedKey = getMatchingJunkFoodKey(foodName);
+    const details = matchedKey ? junkFoodDetails[matchedKey] : null;
+
+    if (details) {
+        return `This appears to be <strong>${foodName}</strong>. ${details.explanation} <br><strong>Nutritional aspects:</strong> ${details.nutritionalAspects.join(', ')}.<br><strong>Advice:</strong> ${details.advice}`;
+    }
+
+    return `You mentioned "<strong>${foodName}</strong>". Its health effect depends on its nutritional composition and frequency of intake.`;
+}
+
+// Wait for the document to fully load
+document.addEventListener('DOMContentLoaded', () => {
+    // Set up voice recognition to analyze food via voice input
+    const recognition = new webkitSpeechRecognition();
+    recognition.continuous = false;
+    recognition.lang = 'en-US';
+
+    const voiceButton = document.getElementById('voice-input-btn');
+    voiceButton.addEventListener('click', () => {
+        recognition.start();
+        document.getElementById("detection-result").textContent = "Listening for food input...";
+    });
+
+    recognition.onresult = function (event) {
+        const result = event.results[0][0].transcript;
+        console.log("Voice input detected:", result);
+        analyzeFoodName(result);
     };
 
-    // Function to check if a food item is considered junk food
-    function isJunkFood(foodName) {
-        const junkFoodKeywords = Object.keys(junkFoodDetails); // Use keys from detailed list
-        const lowerCaseName = foodName.toLowerCase();
-        return junkFoodKeywords.some(keyword => lowerCaseName.includes(keyword));
-    }
+    recognition.onerror = function (event) {
+        console.error("Speech recognition error:", event);
+        document.getElementById("detection-result").textContent = "Error with voice recognition.";
+    };
 
-    // Function to get potential side effects of junk food
-    function getJunkFoodSideEffects(foodName) {
-        const lowerCaseName = foodName.toLowerCase();
-        for (const key in junkFoodDetails) {
-            if (lowerCaseName.includes(key)) {
-                return junkFoodDetails[key].sideEffects;
-            }
-        }
-        return null;
-    }
-
-    // Load MobileNet model
-    async function loadModel() {
-        try {
-            net = await mobilenet.load();
-            console.log("MobileNet model loaded");
-        } catch (error) {
-            console.error("Error loading model:", error);
-            alert("Failed to load model. Please try again.");
-        }
-    }
-
-    // Function to resize image for faster processing
-    function resizeImage(image, targetWidth, targetHeight) {
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-        canvas.width = targetWidth;
-        canvas.height = targetHeight;
-        ctx.drawImage(image, 0, 0, targetWidth, targetHeight);
-        return canvas;
-    }
-
-    // Function to analyze image and detect food
-    async function analyzeImage() {
-        const file = document.getElementById("food-image").files[0];
-        if (!file) {
-            alert("Please upload an image.");
-            return;
-        }
-
-        // Display loading message
-        document.getElementById("detection-result").textContent = "Analyzing image...";
-        document.getElementById("suggestion-area").textContent = '';
-        document.getElementById("confidence-score").textContent = '';
-
-        // Create an image element to display uploaded image
-        const img = document.createElement("img");
-        img.src = URL.createObjectURL(file);
-        img.onload = async function() {
-            // Resize the image to 224x224px before passing to the model for faster processing
-            const resizedCanvas = resizeImage(img, 224, 224);
-
-            // Use the resized canvas to get image data
-            const tensor = tf.browser.fromPixels(resizedCanvas);
-
-            try {
-                // Run the image through MobileNet and get predictions
-                const predictions = await net.classify(tensor);
-                displayResult(predictions, 'image'); // Pass source of detection
-            } catch (error) {
-                console.error("Error during image classification:", error);
-                document.getElementById("detection-result").textContent = "Error analyzing image.";
-            }
-        };
-    }
-
-    // Function to analyze manually entered food name
-    function analyzeFoodName() {
-        const foodName = document.getElementById("manual-food-name").value.trim().toLowerCase();
-        if (!foodName) {
-            alert("Please enter a food name.");
-            return;
-        }
-
-        // Display loading message
-        document.getElementById("detection-result").textContent = "Analyzing food name...";
-        document.getElementById("suggestion-area").textContent = '';
-        document.getElementById("confidence-score").textContent = '';
-
-        // Process the food name and display the result
-        displayResult([{ className: foodName }], 'manual'); // Simulate prediction object for manual input
-    }
-
-    // Display the results of the detection with more detail
-    function displayResult(predictions, source) {
-        const detectionResultDiv = document.getElementById("detection-result");
-        const suggestionAreaParagraph = document.getElementById("suggestion-area");
-        const confidenceScoreParagraph = document.getElementById("confidence-score");
-
-        if (predictions.length > 0) {
-            const foodItem = predictions[0].className.toLowerCase();
-            const confidence = predictions[0].probability ? (predictions[0].probability * 100).toFixed(2) : 'N/A';
-
-            detectionResultDiv.textContent = `Detected: ${foodItem} (${source === 'image' ? 'Image Analysis' : 'Manual Input'})`;
-            confidenceScoreParagraph.textContent = source === 'image' ? `Confidence: ${confidence}%` : '';
-
-            const detailedSuggestion = provideSuggestion(foodItem, confidence, source);
-            suggestionAreaParagraph.textContent = detailedSuggestion;
-
-            // Check for side effects only if the detection source is an image
-            if (source === 'image' && isJunkFood(foodItem)) {
-                const sideEffects = getJunkFoodSideEffects(foodItem);
-                if (sideEffects) {
-                    suggestionAreaParagraph.textContent += `\n\nPotential Health Side Effects: ${sideEffects}`;
-                }
-            }
-        } else {
-            detectionResultDiv.textContent = source === 'image' ? "Could not detect any food in the image." : "No information found for the entered food name.";
-            suggestionAreaParagraph.textContent = "";
-            confidenceScoreParagraph.textContent = "";
-        }
-    }
-
-    // Provide suggestion with detailed health explanation
-    function provideSuggestion(foodName, confidence, source) {
-        const details = junkFoodDetails[foodName];
-
-        if (details) {
-            return `This appears to be ${foodName}. ${details.explanation} Nutritional aspects to be mindful of include: ${details.nutritionalAspects.join(', ')}. ${details.advice}`;
-        }
-
-        if (confidence >= 80 && source === 'image') {
-            return `${foodName} was identified with high confidence. For detailed health information, consider its nutritional content. Generally, whole, unprocessed foods are beneficial. Preparation methods also significantly impact nutritional value.`;
-        } else if (source === 'image') {
-            return `${foodName} was identified. For a better understanding of its health impact, consider its typical nutritional profile. A balanced diet includes a variety of food types in appropriate proportions.`;
-        } else { // Manual input
-            if (junkFoodDetails[foodName]) {
-                const details = junkFoodDetails[foodName];
-                return `Based on your entry "${foodName}", here's some information: ${details.explanation} Nutritional aspects to be mindful of include: ${details.nutritionalAspects.join(', ')}. ${details.advice}`;
-            } else {
-                return `You entered "${foodName}". To understand its health impact, consider its nutritional profile. The health benefits or risks depend on its specific composition and how it's consumed.`;
-            }
-        }
-    }
-
-    // Wait for the document to fully load
-    document.addEventListener('DOMContentLoaded', () => {
-        loadModel();  // Load MobileNet model on page load
-
-        // Bind image analysis function to button
-        const analyzeImageButton = document.getElementById('analyze-image-btn');
-        analyzeImageButton.addEventListener('click', analyzeImage);
-
-        // Bind manual food analysis function to button
-        const analyzeFoodButton = document.getElementById('analyze-food-btn');
-        analyzeFoodButton.addEventListener('click', analyzeFoodName);  // Bind food name input analysis to button
+    // Event listener for manual input
+    const manualButton = document.getElementById('analyze-food-btn');
+    manualButton.addEventListener('click', () => {
+        const foodName = document.getElementById('manual-food-name').value.trim();
+        analyzeFoodName(foodName);
     });
+});

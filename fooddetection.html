@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-        <link rel="icon" type="image/png" href="assets/logo.jpg">
+    <link rel="icon" type="image/png" href="assets/logo.jpg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HealthHorizon – Expanding the limits of well-being.</title>
     <link rel="stylesheet" href="./css/healthcheck.css" />
@@ -14,33 +14,28 @@
 </head>
 <body>
 <main class="container">
+    <h1><i class="fas fa-apple-alt"></i> Food Health Detector</h1>
 
-        <h1><i class="fas fa-apple-alt"></i> Food Health Detector</h1>
-    </header>
-<body>
-    
-</body>
-    <section class="image-detection" aria-labelledby="image-label">
-        <h3 id="image-label"><i class="fas fa-camera"></i>  Upload a Food Image:</h3>
-        <div class="file-input-wrapper">
-            <button type="button" class="file-input-button">
-                <i class="fas fa-upload"></i> Browse Files
-            </button>
-            <input type="file" id="food-image" accept="image/*" />
-        </div>
-        <button id="analyze-image-btn" type="button">
-            <i class="fas fa-magic"></i> Analyse Image
-        </button>
+    <!-- Voice Input Section -->
+    <section class="voice-input">
+        <h3><i class="fas fa-microphone"></i> Speak the Food Name:</h3>
+<button id="voice-input-btn" type="button">
+    <i class="fas fa-microphone"></i> Voice Input
+</button>
     </section>
 
+    <!-- Manual Input Section -->
     <section class="manual-input">
         <h3><i class="fas fa-pencil-alt"></i>  Enter a Food Name:</h3>
         <input type="text" id="manual-food-name" placeholder="Enter food name here..." />
-        <button id="analyze-food-btn" type="button">
-            <i class="fas fa-check-circle"></i> Analyse Food
-        </button>
+       <!-- Analyze Food Button -->
+<button id="analyze-food-btn" type="button">
+    <i class="fas fa-check-circle"></i> Analyze Food
+</button>
+
     </section>
 
+    <!-- Result Area Section -->
     <section class="result-area" aria-live="polite">
         <h2><i class="fas fa-search"></i> Detection Result:</h2>
         <p id="detection-result">Please upload an image or enter a food name.</p>
@@ -53,5 +48,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet"></script>
 <script src="./js/foodhealth.js"></script>
 <script src="./js/mob.js"></script>
+<script src="./js/main.js"></script>
+
 </body>
 </html>
