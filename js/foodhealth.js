@@ -205,22 +205,67 @@ const foodDetails = {
 };
 
 // Initialize voice recognition
-const recognition = new webkitSpeechRecognition();
-recognition.continuous = false;
-recognition.lang = 'en-US';
+let recognition;
+if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    recognition = new SpeechRecognition();
+    recognition.continuous = false;
+    recognition.lang = 'en-US';
+    recognition.interimResults = false; // Ensure only final results are returned
+    recognition.maxAlternatives = 1;
+} else {
+    console.log("Speech Recognition not supported in this browser.");
+    document.getElementById("detection-result").textContent = "Speech recognition not supported.";
+}
 
 document.getElementById("voice-input-btn").addEventListener("click", () => {
-    recognition.start();
-    document.getElementById("detection-result").textContent = "Listening...";
+    if (!recognition) {
+        alert("Speech recognition is not supported on your device/browser. Please try using the keyboard input.");
+        return;
+    }
+
+    // Request microphone permission if not already granted
+    navigator.mediaDevices.getUserMedia({ audio: true })
+        .then(stream => {
+            // Permission granted, start recognition
+            try {
+                recognition.start();
+                document.getElementById("detection-result").textContent = "Listening...";
+                // Stop the stream as we only need permission once for this session
+                stream.getTracks().forEach(track => track.stop());
+            } catch (error) {
+                console.error("Speech recognition start error:", error);
+                document.getElementById("detection-result").textContent = "Error starting voice input.";
+                alert("Failed to start voice recognition. Please try again.");
+            }
+        })
+        .catch(err => {
+            console.error("Microphone access denied:", err);
+            document.getElementById("detection-result").textContent = `Microphone access denied: ${err.message}`;
+            alert("Please grant microphone access to use voice input.");
+        });
 });
 
-recognition.onresult = function (event) {
-    const foodName = event.results[0][0].transcript;
-    document.getElementById("detection-result").textContent = `You said: ${foodName}`;
+// Process speech input
+if (recognition) {
+    recognition.onresult = function (event) {
+        const foodName = event.results[0][0].transcript;
+        document.getElementById("detection-result").textContent = `You said: ${foodName}`;
+        analyzeFoodName(foodName);
+    };
 
-    // Trigger detection & analysis
-    analyzeFoodName(foodName);
-};
+    recognition.onerror = function (event) {
+        console.error("Speech recognition error:", event.error);
+        document.getElementById("detection-result").textContent = `Speech recognition error: ${event.error}`;
+        alert("An error occurred during speech recognition. Please try again.");
+    };
+
+    recognition.onend = function () {
+        console.log("Speech recognition has ended.");
+        // Optionally reset the detection result text after listening ends
+        // document.getElementById("detection-result").textContent = "Ready for voice input.";
+    };
+}
 
 // Function to analyze the food name and get data
 function analyzeFoodName(foodName) {
@@ -236,7 +281,7 @@ function analyzeFoodName(foodName) {
     if (foodKey) {
         const info = foodDetails[foodKey];
         document.getElementById("suggestion-area").innerHTML = `
-            <strong>${foodName}</strong>: ${info.explanation} <br>
+            <strong>${foodKey}</strong>: ${info.explanation} <br>
             <strong>Nutritional aspects:</strong> ${info.nutritionalAspects.join(", ")}.<br>
             <strong>Advice:</strong> ${info.advice}.<br>
             <strong>Potential Health Side Effects:</strong> ${info.sideEffects}
