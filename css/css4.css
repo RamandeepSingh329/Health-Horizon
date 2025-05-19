@@ -7,12 +7,8 @@
     }
   }
   
-  body {
-    background-image: url('../assets/calorie.jpg');
-    background-size: cover;
-    background-position: center center; /* Ensures the image is centered */
-    background-repeat: no-repeat;
-    background-color: #f4f4f4;
+body {
+    background-color: #f4f4f4; /* Fallback background color */
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -22,24 +18,94 @@
     flex-direction: column;
     justify-content: space-between;
     min-height: 100vh;
-    background-attachment: fixed; /* Keep the background fixed for all screen sizes */
-  }
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    
+    /* Layered background: Image on top of the gradient */
+    background-image: url('../assets/calorie.jpg'), linear-gradient(to right, #e0f7fa, #c5e1a5, #fffde7, #ffe0b2, #fbe9e7);
+    
+    background-size: cover, 300% 100%; /* Cover the full viewport with the image and expand the gradient */
+    background-position: center, 0% 50%; /* Center the image and set initial position of the gradient */
+    animation: backgroundTransition 10s ease-in-out infinite alternate; /* Apply the animation */
+}
+
+/* Keyframes for the background transition animation */
+@keyframes backgroundTransition {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes backgroundTransition {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+body.no-scroll {
+    overflow: hidden; /* Prevent scrolling */
+    position: fixed; /* Fix its position */
+    width: 100%; /* Ensure full width */
+    top: 0; /* Stick to the top */
+    left: 0; /* Stick to the left */
+}
   
-  .container {
+.container {
     background-color: rgba(255, 255, 255, 0.8);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     max-width: 400px;
-    width: 100%;
-    position: relative; /* Allow the container to stay in place */
-    z-index: 1; /* Keep the container above the background */
-    margin: 0 auto; /* Center the container horizontally */
-    transition: all 0.3s ease; /* Smooth transition for any transformations */
-  }
-  
-  .container:hover {
+    width: 90%; /* Responsive width for mobile */
+    margin: 80px auto 20px; /* Top margin for spacing, auto horizontal, bottom margin */
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+/* Media query for PC (min-width: 769px) */
+@media (min-width: 769px) {
+    .container {
+        width: 400px; /* Fixed width for PC */
+        margin-top: 100px; /* Adjust top margin for PC if needed */
+        margin-left: auto;
+        margin-right: auto;
+    }
+}/* Default styles for .container (applied to all screen sizes) */
+.container {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+    width: 90%; /* Responsive width for mobile */
+    margin: 20px auto; /* Default margin */
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+/* Styles for Smartphones only (max-width: 768px) */
+@media (max-width: 768px) {
+    .container {
+        margin-top: 80px; /* Adjust this value based on your mobile navbar height */
+    }
+}
+
+/* Styles for PC and larger screens (min-width: 769px) */
+@media (min-width: 769px) {
+    .container {
+        width: 400px; /* Fixed width for PC */
+        margin-top: 100px; /* Adjust top margin for PC if needed */
+        margin-left: auto;
+        margin-right: auto;
+    }
+}  .container:hover {
     transform: scale(1.05);
     transition: transform 0.3s ease;
   }
@@ -531,4 +597,307 @@ footer a:hover {
   footer .social-icons a {
     font-size: 1.2em;
   }
+}
+@media (max-width: 768px) {
+  .hamburger {
+    display: none !important; /* Hide hamburger icon completely */
+  }
+
+  .nav-links {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    position: static; /* Reset position for mobile */
+    background: transparent; /* Match desktop or remove background */
+    box-shadow: none;
+    padding: 0;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    max-height: none;
+    overflow-y: visible;
+  }
+
+  .nav-links li {
+    margin: 0.5rem 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-links li a {
+    display: block;
+    width: 100%;
+    padding: 0.75rem 0;
+  }
+
+  body.no-scroll {
+    overflow: auto; /* Re-enable scrolling just in case */
+    position: static;
+  }
+}
+/* Styles for Smartphones (default or using media query for max-width: 768px) */
+
+/* Default styles (applied to all screen sizes) */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+nav {
+    background-color: green;
+    color: white;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100; /* Ensure it's above other content */
+}
+
+.logo a {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
+/* Styles for Android Phones (and smaller screens - max-width: 768px) */
+@media (max-width: 768px) {
+    nav {
+        position: fixed; /* Stick nav to the top on mobile */
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+
+    .dropdown-nav {
+        position: relative;
+    }
+
+    #dropdown-toggle {
+        background-color: transparent;
+        color: white;
+        border: 1px solid white;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        font-size: 1rem;
+        border-radius: 5px;
+        transition: background-color 0.2s ease-in-out;
+    }
+
+    #dropdown-toggle:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-links {
+        display: none; /* Initially hidden on mobile */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 128, 0, 0.95);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transform-origin: top;
+        transform: scaleY(0);
+        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        overflow: hidden;
+        border-radius: 5px;
+        margin-top: 0.2rem;
+    }
+
+    .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        transform: scaleY(1);
+    }
+
+    .nav-links li {
+        width: 100%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-links li:last-child {
+        border-bottom: none;
+    }
+
+    .nav-links li a {
+        color: white;
+        text-decoration: none;
+        display: block;
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        transition: background-color 0.2s ease-in-out;
+        text-align: left;
+    }
+
+    .nav-links li a:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+}
+
+/* Styles for PC (and larger screens - min-width: 769px) */
+@media (min-width: 769px) {
+    nav {
+        position: static; /* Normal flow on PC */
+        padding: 1rem 2rem;
+    }
+
+    .dropdown-nav {
+        display: none; /* Hide dropdown elements on PC */
+    }
+
+    .nav-links {
+        display: flex !important; /* Show links horizontally */
+        flex-direction: row;
+        position: static;
+        background-color: transparent;
+        box-shadow: none;
+        transform: scaleY(1) !important;
+        overflow: visible;
+        max-height: none;
+        align-items: center;
+        margin-left: auto; /* Push links to the right */
+    }
+
+    .nav-links li {
+        margin-left: 1.5rem;
+        padding: 0;
+        border-bottom: none;
+    }
+
+    .nav-links li a {
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+    }
+}
+
+/* Ensure main content doesn't collide with fixed nav on mobile */
+main {
+    padding-top: 56px; /* Adjust based on your nav's height on mobile */
+}
+
+@media (min-width: 769px) {
+    main {
+        padding-top: 0; /* No extra top padding on PC */
+    }
+}
+/* Dropdown Button Style */
+.dropdown-toggle {
+    width: 100%;
+    padding: 15px 20px;
+    font-size: 1.2rem;
+    background: linear-gradient(145deg, #4CAF50, #45a049); /* Gradient background */
+    color: white;
+    border: none;
+    border-radius: 50px; /* Rounded corners for a sleek look */
+    text-align: left;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.08); /* Subtle shadow */
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+
+/* Animated Border Effect */
+.dropdown-toggle:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 2px solid #ffffff;
+    border-radius: 50px;
+    transition: transform 0.3s ease;
+    transform: scale(0);
+}
+
+.dropdown-toggle:hover:before {
+    transform: scale(1); /* Border grows on hover */
+}
+
+/* Hover Effect for Button */
+.dropdown-toggle:hover {
+    background: linear-gradient(145deg, #45a049, #4CAF50); /* Reverse gradient */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+    transform: translateY(-3px); /* Subtle lift effect */
+}
+
+/* Chevron icon styling */
+.dropdown-toggle i {
+    margin-right: 10px;
+    transition: transform 0.3s ease;
+}
+
+/* Chevron rotate on hover */
+.dropdown-toggle:hover i {
+    transform: rotate(180deg); /* Rotating icon */
+}
+
+/* Dropdown content style (hidden by default) */
+.dropdown-content {
+    display: none;
+    margin-top: 10px;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    max-height: 200px;
+    overflow-y: auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* List styling inside dropdown */
+.dropdown-content ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.dropdown-content li {
+    margin-bottom: 10px;
+}
+
+/* Styling for links */
+.dropdown-content a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 10px 15px;
+    display: block;
+    border-radius: 6px; /* Rounded corners for links */
+    transition: all 0.3s ease;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for links */
+}
+
+/* Hover effect for dropdown links */
+.dropdown-content a:hover {
+    background-color: #f0f0f0;
+    color: white;
+    transform: translateX(5px); /* Slight horizontal movement */
+    font-weight: 600;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Increased shadow on hover */
+}
+
+/* Smooth transition for dropdown links */
+.dropdown-content a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background-color: #45a049;
+    transition: width 0.3s ease;
+    z-index: -1; /* Behind the text */
+}
+
+.dropdown-content a:hover::before {
+    width: 100%; /* Full width underline effect */
 }

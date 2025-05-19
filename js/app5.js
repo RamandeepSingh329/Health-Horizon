@@ -94,3 +94,30 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 3000);
     }
 });
+function toggleDropdown() {
+    const dropdownContent = document.getElementById("dropdownContent");
+    const icon = document.querySelector(".dropdown-toggle i");
+
+    if (dropdownContent.style.display === "block") {
+        dropdownContent.style.display = "none";
+        icon.classList.remove("fa-chevron-up");
+        icon.classList.add("fa-chevron-down");
+    } else {
+        dropdownContent.style.display = "block";
+        icon.classList.remove("fa-chevron-down");
+        icon.classList.add("fa-chevron-up");
+    }
+}
+
+// Close dropdown if clicked outside
+window.onclick = function(event) {
+    const dropdownContent = document.getElementById("dropdownContent");
+    const dropdownButton = document.querySelector(".dropdown-toggle");
+
+    if (!dropdownButton.contains(event.target) && !dropdownContent.contains(event.target)) {
+        dropdownContent.style.display = "none";
+        const icon = document.querySelector(".dropdown-toggle i");
+        icon.classList.remove("fa-chevron-up");
+        icon.classList.add("fa-chevron-down");
+    }
+};

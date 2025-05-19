@@ -65,3 +65,7 @@ document.getElementById('checkCalories').addEventListener('click', function() {
         resultDiv.classList.add('show');
     }, 300); // Delay to allow the hide transition to complete
 });
+function toggleMenu() {
+  const navLinks = document.getElementById("navLinks");
+  navLinks.classList.toggle("active");
+}

@@ -3,36 +3,33 @@
     100% { background-position: 100% 50%; }
   }
   
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-image: url('../assets/calorie.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    animation: backgroundAnimation 30s linear infinite;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
-  }
-  
-/* === CONTAINER === */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: url('../assets/calorie.jpg') no-repeat center center fixed; /* Replace with your actual image path */
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .container {
   max-width: 600px;
   width: 90%;
-  margin: 60px auto;
+  margin: auto;
+  margin-top: 120px; /* Adjust based on nav height */
   padding: 30px 20px;
-  background: rgba(255, 255, 255, 0.3); /* White smoke color with transparency */
-  border-radius: 30px; /* Increased border-radius for more circular corners */
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 30px;
   backdrop-filter: blur(15px);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   text-align: center;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
   box-sizing: border-box;
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
-
 /* Hover effect on container */
 .container:hover {
   transform: scale(1.02);
@@ -74,7 +71,7 @@ input[type="text"] {
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 25px; /* Circular corners for input box */
   background: rgba(255, 255, 255, 0.25); /* Transparent background with a hint of white */
-  color: #fff;
+  color: black;
   font-size: 1em;
   outline: none;
   transition: all 0.3s ease;
@@ -86,7 +83,7 @@ input[type="text"] {
 }
 /* Placeholder styling for input */
 input[type="text"]::placeholder {
-  color: #ddd;
+  color: black;
 }
 
 /* Hover and focus effect on input */
@@ -231,4 +228,129 @@ button:active::after {
       font-size: 1em;
     }
   }
-  
+  /* ✅ Navbar Styles */
+.navbar {
+  background-color: green;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: white;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: lightgreen;
+}
+
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+/* ✅ Responsive for Mobile */
+@media (max-width: 768px) {
+  .navbar-container {
+    flex-wrap: wrap;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: rgba(0, 128, 0, 0.95);
+    margin-top: 1rem;
+    padding: 1rem 0;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links li {
+    text-align: center;
+  }
+}
+/* Navbar Styling */
+.navbar {
+    width: 100%;
+    background-color: rgba(0, 128, 0, 0.9); /* Semi-transparent green */
+    display: flex;
+    justify-content: space-between; /* This keeps logo on the left and heading in the center */
+    align-items: center;
+    padding: 15px 30px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Logo Styling */
+.navbar .logo img {
+    height: 40px; /* Adjust logo size */
+    width: auto;
+    border-radius: 10px;
+}
+
+/* Heading inside container (Center the heading) */
+.container h1 {
+    font-size: 2rem;
+    color: #333;
+    text-align: center; /* Keep the h1 centered inside the container */
+}
+
+/* Container Styling */
+.container {
+    max-width: 600px;
+    width: 90%;
+    margin: 60px auto;
+    padding: 30px 20px;
+    background: rgba(255, 255, 255, 0.3); /* White smoke color with transparency */
+    border-radius: 30px; /* Increased border-radius for more circular corners */
+    backdrop-filter: blur(15px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    box-sizing: border-box;
+}
+
+/* Optional: If you want to center the heading inside the navbar */
+.navbar h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: white;
+    text-align: center; /* Center the heading in the navbar */
+}
